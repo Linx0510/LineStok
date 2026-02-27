@@ -403,7 +403,7 @@ input {
     font-size: 36px;
   }
   .cards {
-    gap: 3px;
+    gap: 20px;
   }
   h1{
     font-size: 32px;
@@ -416,5 +416,12 @@ input {
   }
   .contaner_page {
     padding: 20px 10px;
+  }
+  .or_other {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .contaner_page{
+    order: 2;
   }
 }
