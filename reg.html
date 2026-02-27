@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LineStok - Регистрация</title>
+    <link rel="stylesheet" href="aut_reg.css">
+</head>
+<body>
+    <main>
+        <div class="box-content reg">
+            <div class="contaner_page">
+                <div class="cont_header">
+                    <h1>Добро пожаловать 
+                        <br>в LineStok</h1>
+                    <p>Есть аккаунт?</p>
+                </div>
+                <button class="main_button" onclick="document.location='aut.html'">Войти</button>
+            </div>
+            <div class="container">
+                <div id="registerPage" class="cards">
+                    <img src="img/LOGO.svg" alt="" style="width: 60px;">
+                    <h2>Регистрация</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <input type="password" id="password" name="password" placeholder="********" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="confirm_password">Повторите пароль</label>
+                            <input type="password" id="confirm_password" name="confirm_password" placeholder="********" required>
+                            <div id="passwordError" class="error-message" style="color: #ff4444; font-size: 12px; margin-top: 5px; display: none;">
+                                *Пароли не совпадают
+                            </div>
+                        </div>
+                
+                        <button type="submit" class="form_button" id="submitBtn">Зарегистрироваться</button>
+                    </form>
+                    <div class="or_other">
+                        <div class="solid"></div>
+                        <p>или</p>
+                        <div class="solid"></div>
+                    </div>
+                    <button class="Google_btn">
+                        <img src="img/Google_Icons.svg" alt="">
+                        Вход с аккаунтом Google
+                        <img src="img/Google_Icons.svg" alt="" style="opacity: 0;">
+                    </button>
+                </div>
+
+                <div id="codePage" class="card hidden">
+                    <img src="img/LOGO.svg" alt="" style="width: 60px;">
+                    <div class="card_cont">
+                        <h2>Введите код</h2>
+                        <p class="subtitle">Мы отправили вам на почту письмо с кодом </p>
+            
+                        <div class="code-inputs">
+                            <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" placeholder="*">
+                            <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" placeholder="*">
+                            <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" placeholder="*">
+                            <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" placeholder="*">
+                        </div>
+
+                        <div class="buttons">
+                            <button class="form_button" onclick="verifyCode()">Подтвердить</button>
+                            <button class="form_button_back" onclick="showRegisterPage()">Назад</button>
+                        </div>
+                    </div>
+                    <img src="img/LOGO.svg" alt="" style="width: 60px; opacity: 0;">
+                </div>
+            </div>
+        </div>
+    </main>
+    
+
+    <script>
+        // Получаем элементы
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm_password');
+        const passwordError = document.getElementById('passwordError');
+        const submitBtn = document.getElementById('submitBtn');
+        const form = document.getElementById('registerForm');
+
+        // Функция проверки совпадения паролей
+        function validatePasswords() {
+            if (password.value !== confirmPassword.value) {
+                passwordError.style.display = 'block';
+                confirmPassword.style.borderColor = '#ff4444';
+                password.style.borderColor = '#ff4444';
+                return false;
+            } else {
+                passwordError.style.display = 'none';
+                confirmPassword.style.borderColor = '#e0e0e0';
+                password.style.borderColor = '#e0e0e0';
+                return true;
+            }
+        }
+
+        // Проверка при вводе в поле подтверждения пароля
+        confirmPassword.addEventListener('input', validatePasswords);
+        
+        // Проверка при вводе в поле пароля
+        password.addEventListener('input', validatePasswords);
+
+        // Проверка при отправке формы
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Проверяем совпадение паролей
+            if (!validatePasswords()) {
+                alert('Пароли не совпадают!');
+                return;
+            }
+
+            // Проверяем длину пароля (минимум 6 символов)
+            if (password.value.length < 8) {
+                alert('Пароль должен содержать минимум 8 символов');
+                return;
+            }
+            
+            // Собираем данные формы
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                password: password.value
+            };
+            
+            // Здесь можно отправить данные на сервер
+            console.log('Данные регистрации:', formData);
+            
+            // Показываем уведомление
+            alert('Регистрационные данные отправлены! На ваш email отправлен код подтверждения.');
+            
+            // Переключаем страницы
+            document.getElementById('registerPage').classList.add('hidden');
+            document.getElementById('codePage').classList.remove('hidden');
+            
+            // Автоматически фокусируемся на первом поле ввода кода
+            setTimeout(() => {
+                document.querySelector('.code-input').focus();
+            }, 100);
+        });
+
+        // Обработка ввода кода
+        const codeInputs = document.querySelectorAll('.code-input');
+        
+        codeInputs.forEach((input, index) => {
+            // Автоматический переход к следующему полю
+            input.addEventListener('input', function() {
+                if (this.value.length === 1 && index < codeInputs.length - 1) {
+                    codeInputs[index + 1].focus();
+                }
+                
+                // Проверяем, что введена только цифра
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+
+            // Обработка Backspace
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    codeInputs[index - 1].focus();
+                }
+            });
+
+            // Обработка вставки
+            input.addEventListener('paste', function(e) {
+                e.preventDefault();
+                const paste = (e.clipboardData || window.clipboardData).getData('text');
+                const digits = paste.replace(/[^0-9]/g, '').split('');
+                
+                digits.forEach((digit, i) => {
+                    if (i < codeInputs.length) {
+                        codeInputs[i].value = digit;
+                    }
+                });
+                
+                // Фокус на следующем пустом поле или последнем
+                const nextEmpty = Array.from(codeInputs).find(input => !input.value);
+                if (nextEmpty) {
+                    nextEmpty.focus();
+                } else {
+                    codeInputs[codeInputs.length - 1].focus();
+                }
+            });
+        });
+
+        // Функция проверки кода
+        function verifyCode() {
+            const code = Array.from(codeInputs).map(input => input.value).join('');
+            
+            if (code.length === 4) {
+                if (code === '1234') { // Пример проверки
+                    alert('Код подтвержден! Регистрация завершена.');
+                    // Здесь можно перенаправить на страницу входа или личный кабинет
+                } else {
+                    alert('Неверный код. Попробуйте снова.');
+                    // Очищаем поля
+                    codeInputs.forEach(input => input.value = '');
+                    codeInputs[0].focus();
+                }
+            } else {
+                alert('Пожалуйста, введите 4-значный код');
+            }
+        }
+
+        // Функция возврата к регистрации
+        function showRegisterPage() {
+            document.getElementById('codePage').classList.add('hidden');
+            document.getElementById('registerPage').classList.remove('hidden');
+            
+            // Очищаем поля кода
+            codeInputs.forEach(input => input.value = '');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LineStok - Вход </title>
+    <link rel="stylesheet" href="aut_reg.css">
+</head>
+<body>
+    <main>
+        <div class="box-content aut">
+            <div class="container">
+                <div id="registerPage" class="cards">
+                    <img src="img/LOGO.svg" alt="" style="width: 60px;">
+                    <h2>Вход</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <input type="password" id="password" name="password" placeholder="********" required>
+                        </div>
+                
+                        <button type="submit" class="form_button" id="submitBtn">Войти</button>
+                    </form>
+                    <div class="or_other">
+                        <div class="solid"></div>
+                        <p>или</p>
+                        <div class="solid"></div>
+                    </div>
+                    <button class="Google_btn">
+                        <img src="img/Google_Icons.svg" alt="">
+                        Вход с аккаунтом Google
+                        <img src="img/Google_Icons.svg" alt="" style="opacity: 0;">
+                    </button>
+                </div>
+            </div>
+            <div class="contaner_page">
+                <div class="cont_header">
+                    <h1>Добро пожаловать 
+                        <br>в LineStok</h1>
+                    <p>Нет аккаунта?</p>
+                </div>
+                <button class="main_button" onclick="document.location='reg.html'">Зарегистрироваться</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
