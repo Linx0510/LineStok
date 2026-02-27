@@ -93,7 +93,7 @@
 
 
 main {
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -344,83 +344,77 @@ input {
   .cont_header{
     gap: 5px; 
   }
-  h1{
-    font-size: 28px;
-  }
-  p{
-    font-size: 14px;
-  }
-  .main_button{
-    font-size: 14px;
-    width: 284px;
-    padding: 8px 15px;
-  }
-  .form_button{
-    font-size: 14px;
-    padding: 8px 15px;
-  }
-  .form_button_back{
-    font-size: 14px;
-    padding: 8px 15px;
-  }
+
+ 
   .cards{
     gap: 0px;
   }
-  h2{
-    font-size: 28px;
-  }
+
   .form-group{
     display: flex;
     flex-direction: column;
     gap: 0;
     width: 100%;
   }
-  label{
-    font-size: 12px;
-  }
-  input{
-    height: 40px;
-    font-size: 11px;
-  }
 
-  input::placeholder{
-    font-size: 11px;
-  }
-  .error-message{
-    margin-left: 11px;
-  }
-
-  .or_other p{
-    font-size: 14px;
-  }
-  .subtitle{
-    font-size: 16px;
-  }
 }
 
 @media (max-width: 768px) {
   main{
     padding: 50px 100px ;
   }
-      .box-content {
-        width: 844px;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    .container{
-      width: 100%;
-    }
-    .aut{
-      padding: 40px;
-    }
-    .or_other{
-      margin-top: 15px;
-      margin-bottom: 15px;
-    }
-        .contaner_page {
-          width: 100%;
-          padding: 25px 0;
-        }
+  .box-content {
+    width: 844px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .container{
+    width: 100%;
+  }
+  .aut,
+  .reg{
+    padding: 40px;
+  }
+  .or_other{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .contaner_page {
+    width: 100%;
+    padding: 25px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .aut,
+  .reg{
+    width: 100%;
+  }
+  main {
+    padding: 10% 5%;
+  }
+  .aut,
+  .reg{
+    padding: 7%;
+  }
+  h2{
+    font-size: 36px;
+  }
+  .cards {
+    gap: 3px;
+  }
+  h1{
+    font-size: 32px;
+  }
+  p{
+    font-size: 14px;
+  }
+  .main_button{
+    width: 100%;
+  }
+  .contaner_page {
+    padding: 20px 10px;
+  }
 }
