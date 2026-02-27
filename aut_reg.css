@@ -399,4 +399,28 @@ input {
 }
 
 @media (max-width: 768px) {
+  main{
+    padding: 50px 100px ;
+  }
+      .box-content {
+        width: 844px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .container{
+      width: 100%;
+    }
+    .aut{
+      padding: 40px;
+    }
+    .or_other{
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+        .contaner_page {
+          width: 100%;
+          padding: 25px 0;
+        }
 }
