@@ -515,3 +515,241 @@ h2{
   opacity: 1;
   transform: translateY(-5px);
 }
+.CTA{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 60px 0px;
+  background: url(img/CTA_bg.svg);
+  border-radius: 40px;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+.CTA h4{
+  font-family: 'UNISANS';
+  font-size: 64px;
+  color: var(--mainwhite);
+}
+.CTA p{
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 100%;
+  color: var(--mainwhite);
+  text-align: centers;
+}
+.buttons{
+  display: flex;
+  gap: 10px;
+}
+.btn3{
+  width: fit-content;
+  padding: 10px 10px;
+  display: flex;
+  gap: 10px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  border: solid 0.8px var(--mainwhite);
+  background-color: var(--mainwhite);
+}
+.btn3 p{
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--main-1);
+}
+.btn3:hover {
+ background-color: transparent;
+}
+.btn3:hover svg{
+  transform: rotate(180deg);
+}
+.btn3:hover p,
+.btn3:hover svg>path{
+  color: var(--mainwhite);
+  stroke: var(--mainwhite);
+}
+
+.btn3:active{
+  opacity: 0.5;
+}
+.btn4{
+  width: fit-content;
+  padding: 10px 10px;
+  display: flex;
+  gap: 10px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  border: solid 0.8px var(--mainwhite);
+  background-color: transparent;
+}
+.btn4 p{
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--mainwhite);
+}
+.btn4:hover {
+ background-color: var(--mainwhite);
+}
+.btn4:hover p{
+  color: var(--main-1);
+}
+
+.btn4:active{
+  opacity: 0.5;
+}
+.contact{
+  display: flex;
+  flex-direction: column;
+  padding: 50px 40px;
+  gap: 80px;
+  width: 100%;
+}
+.contact>h1{
+  font-family: 'UNISANS';
+  font-size: 128px;
+  color: var(--main0);
+  text-align: center;
+  width: 100%;
+}
+.contact-content{
+  display: flex;
+  gap: 160px;
+  justify-content: center;
+}
+.cn-links{
+  display: flex;
+  gap: 50px;
+  width: fit-content;
+}
+.cn-link{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 50px;
+}
+.link_blok{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.link_blok h5{
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--main-2);
+}
+.link_blok a,
+.link_blok p{
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--main-2);
+  text-decoration: none;
+}
+.link_blok a:hover{
+  text-decoration: underline;
+}
+.link_blok a:active{
+  opacity: 0.5;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+label{
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--main-2);
+}
+input,
+textarea{
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px var(--main-1);
+  background: var(--mainwhite);
+  padding:  12px 15px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 400 !important;
+  color: var(--main-2);
+  outline:none;
+}
+input:focus,
+textarea:focus{
+  transform: scale(1.02);
+  border: solid 1px var(--main-1);
+  border-radius: 30px;
+  outline:none;
+}
+input::placeholder,
+textarea::placeholder{
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 400;
+  color: #767676;
+}
+.btn_form{
+  width: 100%;
+  padding: 10px 10px;
+  display: flex;
+  gap: 10px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  border: solid 0.8px var(--main-1);
+  background-color: var(--mainwhite);
+}
+.btn_form p{
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--main-1);
+}
+.btn_form:hover {
+ background-color: var(--main-1);
+}
+.btn_form:hover svg{
+  transform: rotate(180deg);
+}
+.btn_form:hover p,
+.btn_form:hover svg>path{
+  color: var(--mainwhite);
+  stroke: var(--mainwhite);
+}
+
+.btn_form:active{
+  opacity: 0.5;
+}
+footer{
+  display: flex;
+  flex-direction: column;
+  border-radius: 40px;
+  background: var(--main-1);
+  gap: 50px;
+  padding:  20px 40px;
+}
+.foot{
+  display: flex;
+  justify-content: space-between;
+}
