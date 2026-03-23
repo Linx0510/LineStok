@@ -19,7 +19,6 @@
             </div>
             <div class="container">
                 <div id="registerPage" class="cards">
-                    <img src="img/LOGO.svg" alt="" style="width: 60px;">
                     <h2>Регистрация</h2>
                     <form id="registerForm">
                         <div class="form-group">
@@ -44,6 +43,12 @@
                                 *Пароли не совпадают
                             </div>
                         </div>
+
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="updates">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Я согласен на <a class="link_check">обработку персональных данных</a> в соответсвии с <a class="link_check">политикой конфиденциальности</a> персональных данных платформы</span>
+                        </label>
                 
                         <button type="submit" class="form_button" id="submitBtn">Зарегистрироваться</button>
                     </form>
@@ -52,15 +57,13 @@
                         <p>или</p>
                         <div class="solid"></div>
                     </div>
-                    <button class="Google_btn">
-                        <img src="img/Google_Icons.svg" alt="">
-                        Вход с аккаунтом Google
-                        <img src="img/Google_Icons.svg" alt="" style="opacity: 0;">
+                    <button class="Yandex_btn">
+                        <img src="img/yandex.svg" alt="">
+                        Войти с Яндекс ID
                     </button>
                 </div>
 
                 <div id="codePage" class="card hidden">
-                    <img src="img/LOGO.svg" alt="" style="width: 60px;">
                     <div class="card_cont">
                         <h2>Введите код</h2>
                         <p class="subtitle">Мы отправили вам на почту письмо с кодом </p>
@@ -77,7 +80,6 @@
                             <button class="form_button_back" onclick="showRegisterPage()">Назад</button>
                         </div>
                     </div>
-                    <img src="img/LOGO.svg" alt="" style="width: 60px; opacity: 0;">
                 </div>
             </div>
         </div>
@@ -85,7 +87,6 @@
     
 
     <script>
-        // Получаем элементы
         const password = document.getElementById('password');
         const confirmPassword = document.getElementById('confirm_password');
         const passwordError = document.getElementById('passwordError');

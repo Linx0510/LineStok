@@ -8,7 +8,7 @@
 </head>
 <body>
     <main>
-        <section class="hero">
+        <section class="hero" id="hero">
             <nav>
                 <img src="img/LOGO_index.svg" alt="">
                 <div class="links">
@@ -203,35 +203,23 @@
                     </svg>
                     <p>Зарегистрироваться</p>
                 </button>
-                <button class="btn4">
-                    <p>Просмотреть портфолио</p>
-                </button>
             </div>
         </section>
         <section class="contact">
             <h1>Напишите нам</h1>
             <div class="contact-content">
-                <div class="cn-links">
-                    <div class="cn-link">
-                        <div class="link_blok">
-                            <h5>Адрес</h5>
-                            <a href="">г. Оренбург, ул.Чкалова, д.11</a>
-                        </div>
-                       <div class="link_blok">
-                            <h5>Пн-Пт</h5>
-                            <p>8:00 - 20:00</p>
-                        </div>
+                <div class="project">
+                    <div class="project-img">
+                        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="">
                     </div>
-                    <div class="cn-link">
-                        
-                         <div class="link_blok">
-                            <h5>Телефон</h5>
-                            <a href="">+7 987 872 19-68 </a>
-                        </div>
-                        <div class="link_blok">
-                            <h5>Почта</h5>
-                            <a href="">Linx05@yandex.ru</a>
-                        </div>
+                    <div class="project-text">
+                        <h2>Главная страница для SPRRRINT</h2>
+                        <button class="project-btn">
+                            <svg width="8" height="7" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.323242 9.83333L11.3232 0.5M11.3232 0.5V10.5M11.3232 0.5H1.01074" stroke="#535D5A"/>
+                            </svg>
+                            <p>Просмотреть работу</p>
+                        </button>
                     </div>
                 </div>
                 <form action="">
@@ -247,10 +235,12 @@
                         <label for="text">Сообщение</label>
                         <textarea id="additional-info" name="additional-info" rows="5" placeholder="Ваше сообщение" autocomplete="off"></textarea>                    
                     </div>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" name="updates">
+                        <span class="checkmark"></span>
+                        <span class="label-text">Я согласен на <a class="link_check">обработку персональных данных</a> в соответсвии с <a class="link_check">политикой конфиденциальности</a> персональных данных платформы</span>
+                    </label>
                     <button class="btn_form">
-                        <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.323242 9.83333L11.3232 0.5M11.3232 0.5V10.5M11.3232 0.5H1.01074" stroke="#535D5A"/>
-                        </svg>
                         <p>Отправить</p>
                     </button>
                 </form>
@@ -280,36 +270,55 @@
            <div class="foot">
                 <div class="line">
                     <h2 style="color: var(--mainwhite);">вдохновение, <br>качество <br>и результат.</h2>
-                    <p style="color: var(--mainwhite);">© LineStok - Copyright</p>
+                    <p style="color: var(--mainwhite);">© LineStok - Copyright 2026</p>
                 </div>
-                <div class="cn-links">
-                    <div class="cn-link">
-                        <div class="link_blok">
-                            <h5 style="color: var(--mainwhite);">Адрес</h5>
-                            <a href="" style="color: var(--mainwhite);">г. Оренбург, ул.Чкалова, д.11</a>
-                        </div>
-                        <div class="link_blok">
-                            <h5 style="color: var(--mainwhite);">Пн-Пт</h5>
-                            <p style="color: var(--mainwhite);">8:00 - 20:00</p>
+                <div class="foot_link">
+                    <div style="width: 130px;" class="clm_links">
+                        <h3>Навигация</h3>
+                        <a href="">Лента</a>
+                        <a href="">Вакансии</a>
+                        <a href="">Для партнеров</a>
+                        <a href="">О платформе</a>
+                        <div class="social-links">
+                            <a href=""><img src="img/Max_logo 1.svg" alt=""></a>
+                            <a href=""><img src="img/VK Logo White 1.svg" alt=""></a>
+                            <a href=""><img src="img/telegram_logo_icon_144811 1.svg" alt=""></a>
                         </div>
                     </div>
-                    <div class="cn-link">
+                    <div class="clm_links">
+                        <h3>Документы</h3>
+                        <a href="">Договор оферты</a>
+                        <a href="">Политика конфиденциальности</a>
+                        <a href="">Согласие на обработку персональных данных </a>
+                        <a href="">Согласие на получение рекламных рассылок</a>
+                    </div>
+                    <div class="clm_links">
                         <div class="link_blok">
-                            <h5 style="color: var(--mainwhite);">Телефон</h5>
-                            <a style="color: var(--mainwhite);" href="">+7 987 872 19-68 </a>
+                            <h5 >Адрес</h5>
+                            <a href="" >г. Оренбург, ул.Чкалова, д.11</a>
                         </div>
                         <div class="link_blok">
-                            <h5 style="color: var(--mainwhite);">Почта</h5>
-                            <a href="" style="color: var(--mainwhite);">Linx05@yandex.ru</a>
+                            <h5 >Телефон</h5>
+                            <a  href="">+7 987 872 19-68 </a>
+                        </div>
+                        <div class="link_blok">
+                            <h5 >Почта</h5>
+                            <a href="" >Linx05@yandex.ru</a>
                         </div>
                     </div>
                 </div>
            </div>
-            <div class="blok_linestok" style="opacity: 0.5;">
-                <div class="promo">
-                    <p>Точка пересечения идей</p>
-                </div>
-            </div>
+           <div class="btn-back">
+                <a href="#hero" class="bg-back">
+                    <p>/Вернуться <br>к началу</p>
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.8">
+                        <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" stroke="#F3F7F6"/>
+                        <path d="M19 29.2534C19 29.8057 19.4477 30.2534 20 30.2534C20.5523 30.2534 21 29.8057 21 29.2534H20H19ZM20.7071 10.0396C20.3166 9.64903 19.6834 9.64903 19.2929 10.0396L12.9289 16.4035C12.5384 16.794 12.5384 17.4272 12.9289 17.8177C13.3195 18.2083 13.9526 18.2083 14.3431 17.8177L20 12.1609L25.6569 17.8177C26.0474 18.2083 26.6805 18.2083 27.0711 17.8177C27.4616 17.4272 27.4616 16.794 27.0711 16.4035L20.7071 10.0396ZM20 29.2534H21L21 10.7467H20H19L19 29.2534H20Z" fill="#F3F7F6"/>
+                        </g>
+                    </svg>
+                </a>
+           </div>
         </footer>
     </main>
 </body>
