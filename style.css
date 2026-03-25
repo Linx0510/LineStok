@@ -654,6 +654,7 @@ form{
   flex-direction: column;
   gap: 20px;
   width: 360px;
+  justify-content: center;
 }
 .form-group{
   display: flex;
