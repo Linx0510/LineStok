@@ -275,7 +275,7 @@
                     </div>
                     <div class="order-form-group">
                         <label>Категории</label>
-                        <div class="order-category-list" id="orderCategoryList"></div>
+                        <div class="filter-list order-filter-list" id="orderCategoryList"></div>
                         <input id="orderCategories" type="hidden" required>
                     </div>
                     <div class="order-form-group">
@@ -290,9 +290,9 @@
                         <label for="orderDocuments">Документы</label>
                         <label class="order-doc-upload" for="orderDocuments">
                             <span class="order-doc-upload-title">+ Добавить документы</span>
-                            <span class="order-doc-upload-note">PDF, DOCX, PNG, JPG до 10 МБ</span>
+                            <span class="order-doc-upload-note">PDF, DOCX, PNG, JPG до 10 МБ (можно выбрать несколько файлов)</span>
                         </label>
-                        <input id="orderDocuments" class="order-doc-input" type="file" multiple>
+                        <input id="orderDocuments" class="order-doc-input" name="documents[]" type="file" multiple>
                         <div class="order-doc-list" id="orderDocList">Файлы не выбраны</div>
                     </div>
                     <button class="order-submit-btn" type="submit">Опубликовать заказ</button>
@@ -445,13 +445,16 @@ const categoriesData = [
         }
     ];
 let filterData = JSON.parse(JSON.stringify(categoriesData));
+let orderCategoriesData = JSON.parse(JSON.stringify(categoriesData));
 function recalcAllParents(){for(const c of filterData){const all=c.subcategories.every(s=>s.selected);const some=c.subcategories.some(s=>s.selected);c.selected=all;c.indeterminate=some&&!all;}}
 function getSelectedItems(){const selected=[];for(const c of filterData){for(const s of c.subcategories){if(s.selected)selected.push(s.name);}}return selected;}
+function recalcOrderParents(){for(const c of orderCategoriesData){const all=c.subcategories.every(s=>s.selected);const some=c.subcategories.some(s=>s.selected);c.selected=all;c.indeterminate=some&&!all;}}
+function getOrderSelectedItems(){const selected=[];for(const c of orderCategoriesData){for(const s of c.subcategories){if(s.selected)selected.push(s.name);}}return selected;}
 function updateSelectedDisplay(){const items=getSelectedItems();document.getElementById('selectedCount').innerText=items.length;const box=document.getElementById('selectedItemsList');if(!items.length){box.innerHTML='<div class="empty-selected">Ничего не выбрано</div>';return;}box.innerHTML=items.map(name=>`<div class="selected-tag">${name}</div>`).join('');}
 function updateOrderCategoriesInput(){
 const input=document.getElementById('orderCategories');
 if(!input)return;
-const selected=getSelectedItems();
+const selected=getOrderSelectedItems();
 input.value=selected.join(', ');
 input.setCustomValidity(selected.length?'':'Выберите хотя бы одну категорию');
 }
@@ -459,19 +462,20 @@ function renderOrderCategoryList(){
 const container=document.getElementById('orderCategoryList');
 if(!container)return;
 container.innerHTML='';
-for(const cat of filterData){
-for(const sub of cat.subcategories){
-const btn=document.createElement('button');
-btn.type='button';
-btn.className='order-category-chip'+(sub.selected?' is-selected':'');
-btn.textContent=sub.name;
-btn.addEventListener('click',()=>{
-sub.selected=!sub.selected;
-recalcAllParents();
-renderFilter();
-});
-container.appendChild(btn);
-}
+for(const cat of orderCategoriesData){
+const catDiv=document.createElement('div');catDiv.className='category-item'+(cat.open?' open':'');
+const mainRow=document.createElement('div');mainRow.className='category-main';
+const left=document.createElement('div');left.className='category-left';
+const check=document.createElement('span');check.className='custom-check'+(cat.indeterminate?' indeterminate':'')+(cat.selected?' checked':'');
+const name=document.createElement('span');name.className='category-name';name.textContent=cat.name;left.append(check,name);
+const chev=document.createElement('span');chev.className='chevron';chev.innerHTML='⌵';
+mainRow.append(left,chev);
+check.addEventListener('click',(e)=>{e.stopPropagation();const state=!cat.selected;cat.subcategories.forEach(s=>s.selected=state);recalcOrderParents();renderOrderCategoryList();});
+name.addEventListener('click',(e)=>{e.stopPropagation();const state=!cat.selected;cat.subcategories.forEach(s=>s.selected=state);recalcOrderParents();renderOrderCategoryList();});
+mainRow.addEventListener('click',()=>{cat.open=!cat.open;renderOrderCategoryList();});
+catDiv.appendChild(mainRow);
+const subList=document.createElement('div');subList.className='subcategory-list';
+for(const sub of cat.subcategories){const subItem=document.createElement('div');subItem.className='sub-item'+(sub.selected?' selected':'');const subCheck=document.createElement('span');subCheck.className='sub-check'+(sub.selected?' checked':'');const subLabel=document.createElement('span');subLabel.className='sub-label';subLabel.textContent=sub.name;subItem.append(subCheck,subLabel);subItem.addEventListener('click',(e)=>{e.stopPropagation();sub.selected=!sub.selected;recalcOrderParents();renderOrderCategoryList();});subList.appendChild(subItem);}catDiv.appendChild(subList);container.appendChild(catDiv);
 }
 updateOrderCategoriesInput();
 }
@@ -497,6 +501,7 @@ function initPriceFilter(){const range=document.getElementById('priceRange');con
 
 document.getElementById('resetAllBtn').addEventListener('click',()=>{filterData=JSON.parse(JSON.stringify(categoriesData));renderFilter();initPriceFilter();});
 recalcAllParents();renderFilter();initPriceFilter();
+recalcOrderParents();renderOrderCategoryList();
 
 const orderModal = document.getElementById('orderModal');
 const openOrderModalBtn = document.getElementById('openOrderModalBtn');
@@ -535,7 +540,9 @@ orderDocumentsInput.addEventListener('change', () => {
         orderDocList.textContent = 'Файлы не выбраны';
         return;
     }
-    orderDocList.textContent = Array.from(orderDocumentsInput.files).map((file) => file.name).join(', ');
+    orderDocList.innerHTML = Array.from(orderDocumentsInput.files)
+        .map((file) => `<span>${file.name}</span>`)
+        .join('');
 });
 
 </script>
