@@ -599,3 +599,134 @@ nav{
   border-radius: 20px;
   text-decoration: none;
 }
+body.modal-open {
+  overflow: hidden;
+}
+
+.order-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.order-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.order-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(45, 50, 49, 0.45);
+}
+
+.order-modal-content {
+  position: relative;
+  width: min(560px, calc(100% - 32px));
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 2px 3px 25px rgba(0, 0, 0, 0.18);
+  z-index: 1;
+}
+
+.order-modal-close {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--main-1);
+  position: absolute;
+  top: 14px;
+  right: 18px;
+}
+
+.order-modal-content h2 {
+  font-family: 'Montserrat';
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--main-2);
+  margin-bottom: 20px;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.order-form-group label {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--main-2);
+  margin-left: 15px;
+}
+
+.order-form-group input,
+.order-form-group textarea {
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px var(--main-1);
+  background: inherit;
+  padding: 12px 15px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--main-2);
+  outline: none;
+}
+
+.order-form-group input:focus,
+.order-form-group textarea:focus {
+  transform: scale(1.02);
+  border: solid 1px var(--main-1);
+  border-radius: 30px;
+  outline: none;
+}
+
+.order-form-group input::placeholder,
+.order-form-group textarea::placeholder {
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 400;
+  color: #767676;
+}
+
+.order-form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.order-submit-btn {
+  border: 1px solid var(--main-1);
+  border-radius: 30px;
+  font-family: 'Montserrat';
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--main-1);
+  background-color: inherit;
+  width: 100%;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.order-submit-btn:hover {
+  color: var(--mainwhite);
+  background-color: var(--main-1);
+}
