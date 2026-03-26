@@ -620,8 +620,9 @@ nav{
 .partners-cta{
     padding: 30px 32px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 18px;
+    gap: 35px;
     align-items: center;
 }
 
@@ -636,6 +637,218 @@ nav{
     padding: 12px 20px;
     white-space: nowrap;
 }
+.contact-content{
+  display: flex;
+  gap: 70px;
+  justify-content: center;
+  margin-left: auto;
+}
+.link_blok{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.link_blok h5{
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--mainwhite);
+}
+.link_blok a{
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--mainwhite);
+  text-decoration: none;
+}
+.link_blok a:hover{
+  text-decoration: underline;
+}
+.link_blok a:active{
+  opacity: 0.5;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+  justify-content: center;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+label{
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--main-2);
+}
+input,
+textarea{
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px var(--main-1);
+  background: inherit;
+  padding:  12px 15px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 400 !important;
+  color: var(--main-2);
+  outline:none;
+}
+input:focus,
+textarea:focus{
+  transform: scale(1.02);
+  border: solid 1px var(--main-1);
+  border-radius: 30px;
+  outline:none;
+}
+input::placeholder,
+textarea::placeholder{
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 400;
+  color: #767676;
+}
+.btn_form{
+  width: 100%;
+  padding: 10px 10px;
+  display: flex;
+  gap: 10px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  border: solid 0.8px var(--main-1);
+  background-color: inherit;
+}
+.btn_form p{
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--main-1);
+}
+.btn_form:hover {
+ background-color: var(--main-1);
+}
+.btn_form:hover svg{
+  transform: rotate(180deg);
+}
+.btn_form:hover p,
+.btn_form:hover svg>path{
+  color: var(--mainwhite);
+  stroke: var(--mainwhite);
+}
+
+.btn_form:active{
+  opacity: 0.5;
+}
+
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+  position: relative;
+  gap: 12px;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: inherit;
+  border: 2px solid var(--main1);
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.custom-checkbox:hover input:not(:disabled) ~ .checkmark {
+  border-color: var(--main-2);
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: var(--main-1);
+  border-color: var(--main-1);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--mainwhite);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom-checkbox input:focus-visible ~ .checkmark {
+  outline: 2px solid var(--main-1);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--main1);
+}
+
+.custom-checkbox input:active:not(:disabled) ~ .checkmark {
+  transform: scale(0.95);
+  transition: transform 0.05s;
+}
+
+.custom-checkbox.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.custom-checkbox input:disabled ~ .checkmark {
+  background-color: #e2e8f0;
+  border-color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.label-text{
+  font-family: 'Montserrat';
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--main-1);
+}
+.link_check{
+  font-family: 'Montserrat';
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--main-0);
+  text-decoration: underline;
+}
+
+
+.custom-checkbox:hover:not(.disabled) .label-text {
+    color: #0f172a;
+}
+
+
 
 @media (max-width: 1180px){
     main{
