@@ -274,8 +274,9 @@
                         <input id="orderTitle" type="text" placeholder="Например: Дизайн лендинга" required>
                     </div>
                     <div class="order-form-group">
-                        <label for="orderCategory">Категория</label>
-                        <input id="orderCategory" type="text" placeholder="Веб и мобильный дизайн" required>
+                        <label>Категории</label>
+                        <div class="order-category-list" id="orderCategoryList"></div>
+                        <input id="orderCategories" type="hidden" required>
                     </div>
                     <div class="order-form-group">
                         <label for="orderBudget">Бюджет</label>
@@ -284,6 +285,15 @@
                     <div class="order-form-group">
                         <label for="orderDescription">Описание</label>
                         <textarea id="orderDescription" placeholder="Опишите задачу и пожелания" rows="4" required></textarea>
+                    </div>
+                    <div class="order-form-group">
+                        <label for="orderDocuments">Документы</label>
+                        <label class="order-doc-upload" for="orderDocuments">
+                            <span class="order-doc-upload-title">+ Добавить документы</span>
+                            <span class="order-doc-upload-note">PDF, DOCX, PNG, JPG до 10 МБ</span>
+                        </label>
+                        <input id="orderDocuments" class="order-doc-input" type="file" multiple>
+                        <div class="order-doc-list" id="orderDocList">Файлы не выбраны</div>
                     </div>
                     <button class="order-submit-btn" type="submit">Опубликовать заказ</button>
                 </form>
@@ -438,6 +448,33 @@ let filterData = JSON.parse(JSON.stringify(categoriesData));
 function recalcAllParents(){for(const c of filterData){const all=c.subcategories.every(s=>s.selected);const some=c.subcategories.some(s=>s.selected);c.selected=all;c.indeterminate=some&&!all;}}
 function getSelectedItems(){const selected=[];for(const c of filterData){for(const s of c.subcategories){if(s.selected)selected.push(s.name);}}return selected;}
 function updateSelectedDisplay(){const items=getSelectedItems();document.getElementById('selectedCount').innerText=items.length;const box=document.getElementById('selectedItemsList');if(!items.length){box.innerHTML='<div class="empty-selected">Ничего не выбрано</div>';return;}box.innerHTML=items.map(name=>`<div class="selected-tag">${name}</div>`).join('');}
+function updateOrderCategoriesInput(){
+const input=document.getElementById('orderCategories');
+if(!input)return;
+const selected=getSelectedItems();
+input.value=selected.join(', ');
+input.setCustomValidity(selected.length?'':'Выберите хотя бы одну категорию');
+}
+function renderOrderCategoryList(){
+const container=document.getElementById('orderCategoryList');
+if(!container)return;
+container.innerHTML='';
+for(const cat of filterData){
+for(const sub of cat.subcategories){
+const btn=document.createElement('button');
+btn.type='button';
+btn.className='order-category-chip'+(sub.selected?' is-selected':'');
+btn.textContent=sub.name;
+btn.addEventListener('click',()=>{
+sub.selected=!sub.selected;
+recalcAllParents();
+renderFilter();
+});
+container.appendChild(btn);
+}
+}
+updateOrderCategoriesInput();
+}
 function renderFilter(){const container=document.getElementById('filterList');container.innerHTML='';
 for(const cat of filterData){
 const catDiv=document.createElement('div');catDiv.className='category-item'+(cat.open?' open':'');
@@ -454,7 +491,7 @@ catDiv.appendChild(mainRow);
 const subList=document.createElement('div');subList.className='subcategory-list';
 for(const sub of cat.subcategories){const subItem=document.createElement('div');subItem.className='sub-item'+(sub.selected?' selected':'');const subCheck=document.createElement('span');subCheck.className='sub-check'+(sub.selected?' checked':'');const subLabel=document.createElement('span');subLabel.className='sub-label';subLabel.textContent=sub.name;subItem.append(subCheck,subLabel);subItem.addEventListener('click',(e)=>{e.stopPropagation();sub.selected=!sub.selected;recalcAllParents();renderFilter();});subList.appendChild(subItem);}catDiv.appendChild(subList);container.appendChild(catDiv);
 }
-updateSelectedDisplay();}
+updateSelectedDisplay();updateOrderCategoriesInput();renderOrderCategoryList();}
 
 function initPriceFilter(){const range=document.getElementById('priceRange');const input=document.getElementById('priceMax');const sync=(val)=>{const safe=Math.max(0,Math.min(500000,Number(val)||0));range.value=safe;input.value=safe;};range.addEventListener('input',()=>sync(range.value));input.addEventListener('input',()=>sync(input.value));sync(range.value);}
 
@@ -464,6 +501,8 @@ recalcAllParents();renderFilter();initPriceFilter();
 const orderModal = document.getElementById('orderModal');
 const openOrderModalBtn = document.getElementById('openOrderModalBtn');
 const closeOrderModalElements = document.querySelectorAll('[data-close-order-modal]');
+const orderDocumentsInput = document.getElementById('orderDocuments');
+const orderDocList = document.getElementById('orderDocList');
 
 function openOrderModal() {
     orderModal.classList.add('is-open');
@@ -488,7 +527,15 @@ document.addEventListener('keydown', (event) => {
 
 document.querySelector('.order-form').addEventListener('submit', (event) => {
     event.preventDefault();
+    updateOrderCategoriesInput();
     closeOrderModal();
+});
+orderDocumentsInput.addEventListener('change', () => {
+    if (!orderDocumentsInput.files.length) {
+        orderDocList.textContent = 'Файлы не выбраны';
+        return;
+    }
+    orderDocList.textContent = Array.from(orderDocumentsInput.files).map((file) => file.name).join(', ');
 });
 
 </script>
