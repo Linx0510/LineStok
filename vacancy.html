@@ -214,7 +214,7 @@
         <div class="main-content">
             <div class="page-header">
                 <h1 class="page-title">Вакансии</h1>
-                <button class="add-vacancy-btn" type="button">Добавить вакансию</button>
+                <button class="add-vacancy-btn" type="button" id="openOrderModalBtn">Добавить заказ</button>
             </div>
             <div class="vacancy-layout">
             <section class="vacancy-column">
@@ -261,6 +261,32 @@
                     </div>
                 </div>
             </aside>
+            </div>
+        </div>
+        <div class="order-modal" id="orderModal" aria-hidden="true">
+            <div class="order-modal-overlay" data-close-order-modal></div>
+            <div class="order-modal-content" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+                <button class="order-modal-close" type="button" aria-label="Закрыть форму" data-close-order-modal>×</button>
+                <h2 id="orderModalTitle">Добавить заказ</h2>
+                <form class="order-form">
+                    <div class="order-form-group">
+                        <label for="orderTitle">Название заказа</label>
+                        <input id="orderTitle" type="text" placeholder="Например: Дизайн лендинга" required>
+                    </div>
+                    <div class="order-form-group">
+                        <label for="orderCategory">Категория</label>
+                        <input id="orderCategory" type="text" placeholder="Веб и мобильный дизайн" required>
+                    </div>
+                    <div class="order-form-group">
+                        <label for="orderBudget">Бюджет</label>
+                        <input id="orderBudget" type="text" placeholder="от 50 000 ₽" required>
+                    </div>
+                    <div class="order-form-group">
+                        <label for="orderDescription">Описание</label>
+                        <textarea id="orderDescription" placeholder="Опишите задачу и пожелания" rows="4" required></textarea>
+                    </div>
+                    <button class="order-submit-btn" type="submit">Опубликовать заказ</button>
+                </form>
             </div>
         </div>
     </main>
@@ -434,6 +460,37 @@ function initPriceFilter(){const range=document.getElementById('priceRange');con
 
 document.getElementById('resetAllBtn').addEventListener('click',()=>{filterData=JSON.parse(JSON.stringify(categoriesData));renderFilter();initPriceFilter();});
 recalcAllParents();renderFilter();initPriceFilter();
+
+const orderModal = document.getElementById('orderModal');
+const openOrderModalBtn = document.getElementById('openOrderModalBtn');
+const closeOrderModalElements = document.querySelectorAll('[data-close-order-modal]');
+
+function openOrderModal() {
+    orderModal.classList.add('is-open');
+    orderModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+}
+
+function closeOrderModal() {
+    orderModal.classList.remove('is-open');
+    orderModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+}
+
+openOrderModalBtn.addEventListener('click', openOrderModal);
+closeOrderModalElements.forEach((el) => el.addEventListener('click', closeOrderModal));
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && orderModal.classList.contains('is-open')) {
+        closeOrderModal();
+    }
+});
+
+document.querySelector('.order-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    closeOrderModal();
+});
+
 </script>
 </body>
 </html>
