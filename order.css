@@ -1,0 +1,158 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('font/MONTSERRAT-REGULAR.TTF') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('font/MONTSERRAT-MEDIUM.TTF') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('font/MONTSERRAT-BOLD.TTF') format('truetype');
+  font-weight: 700;
+}
+
+:root {
+  --bg: #edeef0;
+  --card: #ffffff;
+  --text: #2d3231;
+  --muted: #798783;
+  --accent: #535d5a;
+  --line: #d9e4df;
+  --chip-bg: #f3f7f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.order-page {
+  max-width: 980px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
+  display: grid;
+  gap: 20px;
+}
+
+.back-link {
+  width: fit-content;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.order-card,
+.docs-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 28px;
+  border: 1px solid var(--line);
+}
+
+.order-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.order-date {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.order-status {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2f7250;
+  background: #e9f7ee;
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.company {
+  margin: 12px 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.salary {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.description {
+  margin: 16px 0;
+  line-height: 1.6;
+  color: var(--accent);
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.docs-card h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.docs-caption {
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+
+.docs-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.docs-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fafcfb;
+}
+
+.doc-name {
+  font-weight: 500;
+}
+
+.doc-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+}
