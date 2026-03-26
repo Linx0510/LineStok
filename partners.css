@@ -473,3 +473,193 @@ nav{
   gap: 24px;
   padding-bottom: 40px;
 }
+.partners-hero,
+.partner-card,
+.partners-steps,
+.partners-cta{
+    background: #FFFFFF;
+    border-radius: 24px;
+    box-shadow: 0 6px 30px rgba(83, 93, 90, 0.08);
+}
+
+.partners-hero{
+    padding: 36px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-end;
+}
+
+.partners-label{
+    display: inline-flex;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #E7F0EC;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--main-1);
+    margin-bottom: 14px;
+}
+
+.partners-hero h1,
+.partners-steps h2,
+.partners-cta h2{
+    font-family: 'Montserrat';
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--main-2);
+    line-height: 1.1;
+}
+
+.partners-subtitle{
+    margin-top: 14px;
+    max-width: 700px;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--main0);
+}
+
+.partners-primary-btn,
+.partners-secondary-btn{
+    border: none;
+    border-radius: 22px;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.partners-primary-btn{
+    background: var(--main-1);
+    color: var(--mainwhite);
+    padding: 12px 24px;
+    white-space: nowrap;
+}
+
+.partners-primary-btn:hover,
+.partners-secondary-btn:hover{
+    transform: translateY(-1px);
+}
+
+.partners-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.partner-card{
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.partner-card h2{
+    font-family: 'Montserrat';
+    font-size: 22px;
+    color: var(--main-2);
+}
+
+.partner-card p,
+.step-item p,
+.partners-cta p{
+    font-family: 'Montserrat';
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--main0);
+}
+
+.partner-card ul{
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.partner-card li{
+    font-family: 'Montserrat';
+    font-size: 13px;
+    color: var(--main-1);
+}
+
+.accent-card{
+    background: linear-gradient(160deg, #EAF3EF 0%, #FFFFFF 100%);
+    border: 1px solid #D3E3DD;
+}
+
+.partners-steps{
+    padding: 32px;
+}
+
+.steps-list{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.step-item{
+    background: #F4F7F6;
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.step-item span{
+    font-family: 'UNISANS';
+    font-size: 26px;
+    color: var(--main-1);
+}
+
+.partners-cta{
+    padding: 30px 32px;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: center;
+}
+
+.partners-cta p a{
+    color: var(--GREEN-500);
+    text-decoration: none;
+}
+
+.partners-secondary-btn{
+    background: #E7F0EC;
+    color: var(--main-1);
+    padding: 12px 20px;
+    white-space: nowrap;
+}
+
+@media (max-width: 1180px){
+    main{
+        padding: 0 40px;
+    }
+
+    nav{
+        padding: 0 40px;
+    }
+
+    .partners-grid,
+    .steps-list{
+        grid-template-columns: 1fr;
+    }
+
+    .partners-hero,
+    .partners-cta{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .partners-hero h1,
+    .partners-steps h2,
+    .partners-cta h2{
+        font-size: 30px;
+    }
+}
