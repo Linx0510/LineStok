@@ -712,6 +712,65 @@ body.modal-open {
   resize: vertical;
   min-height: 120px;
 }
+.order-category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.order-category-chip {
+  border: 1px solid #d0d7d5;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--main-1);
+  font-family: 'Montserrat';
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.order-category-chip.is-selected {
+  background: var(--main-1);
+  color: #fff;
+  border-color: var(--main-1);
+}
+
+.order-doc-upload {
+  border: 1px dashed #aab7b4;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+}
+
+.order-doc-upload-title {
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--main-1);
+}
+
+.order-doc-upload-note {
+  font-family: 'Montserrat';
+  font-size: 12px;
+  color: #767676;
+}
+
+.order-doc-input {
+  display: none;
+}
+
+.order-doc-list {
+  font-family: 'Montserrat';
+  font-size: 12px;
+  color: #677486;
+}
 
 .order-submit-btn {
   border: 1px solid var(--main-1);
