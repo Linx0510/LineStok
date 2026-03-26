@@ -277,28 +277,31 @@
     <div class="image-modal" id="imageModal" aria-hidden="true">
         <div class="image-modal-content">
             <button class="modal-close" id="modalClose" aria-label="Закрыть">×</button>
-            <img id="modalImage" src="" alt="Увеличенное изображение">
+            <div class="image-modal-gallery" id="modalGallery" aria-label="Галерея изображений в модальном окне"></div>
         </div>
     </div>
 
     <script>
         const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
+        const modalGallery = document.getElementById('modalGallery');
         const modalClose = document.getElementById('modalClose');
         const galleryImages = document.querySelectorAll('.work-detail-image img');
 
         function closeModal() {
             modal.classList.remove('open');
             modal.setAttribute('aria-hidden', 'true');
-            modalImage.src = '';
         }
 
-        galleryImages.forEach((image) => {
+        galleryImages.forEach((image, index) => {
+            const modalImg = document.createElement('img');
+            modalImg.src = image.src;
+            modalImg.alt = image.alt || `Увеличенное изображение ${index + 1}`;
+            modalGallery.appendChild(modalImg);
+
             image.addEventListener('click', () => {
-                modalImage.src = image.src;
-                modalImage.alt = image.alt || 'Увеличенное изображение';
                 modal.classList.add('open');
                 modal.setAttribute('aria-hidden', 'false');
+                modalGallery.scrollTop = modalImg.offsetTop - 12;
             });
         });
 
