@@ -537,7 +537,7 @@ nav{
 .vacancy-salary,.vacancy-card strong {font-family:'Montserrat';font-weight:700;color:#2E3E34;font-size:18px;}
 .vacancy-tags {display:flex;gap:10px;flex-wrap:wrap;}
 .vacancy-tags span {background:#F1F3F3;border-radius:20px;padding:6px 12px;font-family:'Montserrat';font-size:12px;font-weight:600;color:#535D5A;}
-.respond-btn {border:none;background:#535D5A;color:#F3F7F6;border-radius:20px;padding:12px 20px;font-family:'Montserrat';font-weight:600;cursor:pointer;width:max-content;}
+.respond-btn {border:none;background:#535D5A;color:#F3F7F6;border-radius:20px;padding:8px 20px; font-family:'Montserrat';font-weight:600;cursor:pointer;width:max-content; text-decoration: none;}
 .respond-btn:hover {background:#2D3231;}
 .vacancy-list {display:flex;flex-direction:column;gap:12px;}
 
