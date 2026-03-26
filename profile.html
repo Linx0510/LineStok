@@ -212,7 +212,48 @@
             </a>
         </div>
         <div class="main-content">
-            <section class="profile-section notifications-section">
+            <div class="profile-tabs" aria-label="Навигация по разделам профиля">
+                <button class="profile-tab is-active" data-target="summary-section" type="button">Профиль</button>
+                <button class="profile-tab" data-target="notifications-section" type="button">Уведомления</button>
+                <button class="profile-tab" data-target="portfolio-section" type="button">Портфолио</button>
+                <button class="profile-tab" data-target="orders-section" type="button">Заказы</button>
+            </div>
+
+            <section id="summary-section" class="profile-section summary-section tab-panel is-active">
+                <div class="summary-top">
+                    <img src="img/Frame 113342 (1).png" alt="Обложка профиля" class="summary-cover">
+                </div>
+                <div class="summary-user">
+                    <div class="summary-avatar">
+                        <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="38" cy="38" r="38" fill="#798783"/>
+                            <circle cx="38" cy="30" r="14" fill="#C5DDD5"/>
+                            <path d="M15 66C18.4444 55.7778 27.1111 49 38 49C48.8889 49 57.5556 55.7778 61 66" fill="#C5DDD5"/>
+                        </svg>
+                    </div>
+                    <div class="summary-user-info">
+                        <h1>Лиана Сисенова</h1>
+                        <p>UI/UX Designer · Алматы</p>
+                        <span>Linx05@yandex.ru</span>
+                    </div>
+                </div>
+                <div class="summary-stats">
+                    <article class="summary-stat-card">
+                        <h3>12</h3>
+                        <p>Проектов в портфолио</p>
+                    </article>
+                    <article class="summary-stat-card">
+                        <h3>8</h3>
+                        <p>Активных заказов</p>
+                    </article>
+                    <article class="summary-stat-card">
+                        <h3>4.9</h3>
+                        <p>Рейтинг профиля</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="notifications-section" class="profile-section notifications-section tab-panel">
                 <div class="section-header">
                     <h1>Уведомления</h1>
                     <a href="#" class="section-link">Отметить всё прочитанным</a>
@@ -239,7 +280,7 @@
                 </div>
             </section>
 
-            <section class="profile-section portfolio-section">
+            <section id="portfolio-section" class="profile-section portfolio-section tab-panel">
                 <div class="section-header">
                     <h2>Портфолио</h2>
                     <button class="section-action">+ Добавить проект</button>
@@ -269,7 +310,7 @@
                 </div>
             </section>
 
-            <section class="profile-section orders-section">
+            <section id="orders-section" class="profile-section orders-section tab-panel">
                 <div class="section-header">
                     <h2>Заказы</h2>
                     <a href="#" class="section-link">Смотреть все</a>
@@ -317,5 +358,24 @@
             </section>
         </div>
     </main>
+    <script>
+        const tabs = document.querySelectorAll('.profile-tab');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                const targetId = tab.dataset.target;
+
+                tabs.forEach((item) => item.classList.remove('is-active'));
+                panels.forEach((panel) => panel.classList.remove('is-active'));
+
+                tab.classList.add('is-active');
+                const currentPanel = document.getElementById(targetId);
+                if (currentPanel) {
+                    currentPanel.classList.add('is-active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
