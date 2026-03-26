@@ -473,3 +473,195 @@ nav{
   gap: 24px;
   padding-bottom: 40px;
 }
+.platform-hero,
+.metric-card,
+.about-card,
+.platform-steps,
+.platform-values {
+    background: #FFFFFF;
+    border-radius: 24px;
+    border: 1px solid #DCE1E6;
+}
+
+.platform-hero {
+    padding: 36px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-end;
+}
+
+.platform-label {
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--main0);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.platform-hero h1 {
+    font-family: 'Montserrat';
+    font-size: 34px;
+    line-height: 1.15;
+    font-weight: 700;
+    color: var(--main-2);
+    max-width: 760px;
+    margin-bottom: 14px;
+}
+
+.platform-subtitle {
+    font-family: 'Montserrat';
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--main-1);
+    max-width: 760px;
+}
+
+.platform-primary-btn {
+    border: none;
+    border-radius: 20px;
+    background: var(--main-1);
+    color: var(--mainwhite);
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.platform-primary-btn:hover { opacity: 0.88; }
+
+.platform-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.metric-card {
+    padding: 24px;
+}
+
+.metric-card h2 {
+    font-family: 'UNISANS';
+    font-size: 40px;
+    color: var(--main-2);
+    margin-bottom: 8px;
+}
+
+.metric-card p {
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--main-1);
+}
+
+.accent-card {
+    background: linear-gradient(135deg, #E5F0EB 0%, #D7E8DF 100%);
+}
+
+.platform-about-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 16px;
+}
+
+.about-card {
+    padding: 26px;
+}
+
+.about-card h3,
+.platform-steps h2,
+.platform-values h2,
+.value-item h3 {
+    font-family: 'Montserrat';
+    color: var(--main-2);
+}
+
+.about-card h3,
+.value-item h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.about-card p,
+.about-card li,
+.step-item p,
+.value-item p {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--main-1);
+    font-weight: 500;
+}
+
+.about-card ul {
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.platform-steps,
+.platform-values {
+    padding: 26px;
+}
+
+.platform-steps h2,
+.platform-values h2 {
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.steps-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.step-item {
+    border-radius: 18px;
+    background-color: #F5F7F9;
+    border: 1px solid #E3E8EC;
+    padding: 16px;
+}
+
+.step-item span {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'UNISANS';
+    font-size: 13px;
+    color: var(--mainwhite);
+    background-color: var(--main-1);
+    margin-bottom: 10px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.value-item {
+    border-radius: 18px;
+    border: 1px solid #DCE1E6;
+    padding: 18px;
+}
+
+@media (max-width: 1200px) {
+    main { padding: 0 32px; }
+    nav { padding: 0 32px; }
+    .platform-metrics,
+    .steps-list,
+    .values-grid,
+    .platform-about-grid { grid-template-columns: 1fr; }
+    .platform-hero { flex-direction: column; align-items: flex-start; }
+}
