@@ -666,15 +666,35 @@ nav{
 
 .image-modal-content {
     position: relative;
-    width: min(90vw, 980px);
+    width: min(94vw, 1180px);
+    max-height: 92vh;
+    padding-right: 10px;
 }
 
-.image-modal img {
+.image-modal-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    max-height: 92vh;
+    padding-right: 8px;
+}
+
+.image-modal-gallery img {
     width: 100%;
-    max-height: 88vh;
+    max-height: none;
     object-fit: contain;
-    border-radius: 16px;
+    border-radius: 18px;
     background: #111;
+}
+
+.image-modal-gallery::-webkit-scrollbar {
+    width: 7px;
+}
+
+.image-modal-gallery::-webkit-scrollbar-thumb {
+    background-color: #b6c7c1;
+    border-radius: 10px;
 }
 
 .modal-close {
