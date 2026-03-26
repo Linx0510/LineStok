@@ -904,6 +904,19 @@ nav{
     gap: 10px;
 }
 
+.selected-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.selected-counter {
+    font-size: 0.85rem;
+    color: #677486;
+    white-space: nowrap;
+}
+
 .reset-btn-bottom {
     background: #F0F2F5;
     border: none;
