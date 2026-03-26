@@ -473,6 +473,37 @@ nav{
   gap: 24px;
   padding-bottom: 40px;
 }
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.page-title {
+  font-family: 'Montserrat';
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--main-2);
+}
+
+.add-vacancy-btn {
+  border: none;
+  border-radius: 20px;
+  padding: 11px 20px;
+  background: var(--main-1);
+  color: var(--mainwhite);
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-vacancy-btn:hover {
+  background: var(--main-2);
+}
+
 .vacancy-layout {
   display: grid;
   grid-template-columns: 1fr 350px;
