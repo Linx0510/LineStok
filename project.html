@@ -213,10 +213,15 @@
         </div>
         <div class="main-content">
             <div class="work-detail-container">
-                <div class="work-detail-image">
-                    <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="">
-                    <img src="img/Frame 113342 (1).png" alt="">
-                    <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="">
+                <div class="work-detail-image" aria-label="Галерея изображений проекта">
+                    <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 1">
+                    <img src="img/Frame 113342 (1).png" alt="Скрин проекта 2">
+                    <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 3">
+                    <img src="img/Frame 113342 (1).png" alt="Скрин проекта 4">
+                    <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 5">
+                    <img src="img/Frame 113342 (1).png" alt="Скрин проекта 6">
+                    <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 7">
+                    <img src="img/Frame 113342 (1).png" alt="Скрин проекта 8">
                 </div>
                 <div class="work-detail-info">
                     <div class="work-detail-info-text">
@@ -268,250 +273,60 @@
             </div>
         </div>
     </main>
-=======
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Detail</title>
-  <style>
-    :root {
-      --bg: #f3f7f6;
-      --panel: #ffffff;
-      --text: #2f3836;
-      --muted: #798783;
-      --line: #dbe6e2;
-      --accent: #535d5a;
-    }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Montserrat, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow: hidden;
-    }
-
-    .page {
-      max-width: 1280px;
-      height: calc(100vh - 64px);
-      margin: 32px auto;
-      padding: 0 24px;
-    }
-
-    .work-detail {
-      height: 100%;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: var(--panel);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: minmax(260px, 360px) 1fr;
-    }
-
-    .work-detail-info {
-      height: 100%;
-      padding: 28px;
-      border-right: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      overflow: hidden;
-    }
-
-    .work-detail-info h1 {
-      margin: 0;
-      font-size: 28px;
-      line-height: 1.2;
-      color: var(--accent);
-    }
-
-    .work-detail-info p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .work-detail-image {
-      height: 100%;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      scrollbar-width: thin;
-      scrollbar-color: #b6c7c1 transparent;
-    }
-
-    .work-detail-image::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .work-detail-image::-webkit-scrollbar-thumb {
-      background: #b6c7c1;
-      border-radius: 999px;
-    }
-
-    .work-detail-image img {
-      width: 100%;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      display: block;
-      cursor: zoom-in;
-      transition: transform 0.2s ease;
-      background: #fff;
-    }
-
-    .work-detail-image img:hover {
-      transform: translateY(-1px);
-    }
-
-    .image-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(16, 20, 19, 0.86);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      z-index: 2000;
-    }
-
-    .image-modal.open {
-      display: flex;
-    }
-
-    .image-modal-content {
-      position: relative;
-      max-width: min(1100px, 100%);
-      max-height: 100%;
-    }
-
-    .image-modal img {
-      max-width: 100%;
-      max-height: calc(100vh - 48px);
-      border-radius: 12px;
-      border: 1px solid #97aaa4;
-      object-fit: contain;
-      background: #fff;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: -12px;
-      right: -12px;
-      width: 34px;
-      height: 34px;
-      border: 0;
-      border-radius: 50%;
-      background: #f3f7f6;
-      color: #2a3431;
-      font-size: 22px;
-      line-height: 1;
-      cursor: pointer;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
-    }
-
-    @media (max-width: 900px) {
-      body {
-        overflow: auto;
-      }
-
-      .page {
-        height: auto;
-        margin: 16px auto;
-      }
-
-      .work-detail {
-        min-height: calc(100vh - 32px);
-        grid-template-columns: 1fr;
-      }
-
-      .work-detail-info {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .work-detail-image {
-        max-height: 70vh;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <section class="work-detail">
-      <aside class="work-detail-info">
-        <h1>SPRRRINT — кейс</h1>
-        <p>
-          Левая колонка остается неподвижной, а изображения в блоке справа
-          прокручиваются колесиком мыши внутри ограниченного родительского контейнера.
-        </p>
-        <p>
-          Нажмите на любую картинку, чтобы открыть ее в модальном окне в большом формате.
-        </p>
-      </aside>
-
-      <div class="work-detail-image" aria-label="Галерея изображений проекта">
-        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 1" />
-        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 2" />
-        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 3" />
-        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 4" />
-        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 5" />
-        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 6" />
-        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 7" />
-        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Скрин проекта 8" />
-      </div>
-    </section>
-  </div>
-
-  <div class="image-modal" id="imageModal" aria-hidden="true">
-    <div class="image-modal-content">
-      <button class="modal-close" id="modalClose" aria-label="Закрыть">×</button>
-      <img id="modalImage" src="" alt="Увеличенное изображение" />
+    <div class="image-modal" id="imageModal" aria-hidden="true">
+        <div class="image-modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Закрыть">×</button>
+            <div class="image-modal-gallery" id="modalGallery" aria-label="Галерея в модальном окне"></div>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalClose = document.getElementById('modalClose');
-    const galleryImages = document.querySelectorAll('.work-detail-image img');
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalGallery = document.getElementById('modalGallery');
+        const galleryImages = Array.from(document.querySelectorAll('.work-detail-image img'));
 
-    function closeModal() {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      modalImage.src = '';
-    }
+        galleryImages.forEach((image, index) => {
+            const modalImage = image.cloneNode(true);
+            modalImage.setAttribute('data-index', String(index));
+            modalGallery.appendChild(modalImage);
+        });
 
-    galleryImages.forEach((image) => {
-      image.addEventListener('click', () => {
-        modalImage.src = image.src;
-        modalImage.alt = image.alt || 'Увеличенное изображение';
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-      });
-    });
+        function openModal(startIndex) {
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
 
-    modalClose.addEventListener('click', closeModal);
+            const startImage = modalGallery.querySelector(`[data-index="${startIndex}"]`);
+            if (startImage) {
+                startImage.scrollIntoView({ block: 'start' });
+            }
+        }
 
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+        }
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal.classList.contains('open')) {
-        closeModal();
-      }
-    });
-  </script>
+        galleryImages.forEach((image, index) => {
+            image.addEventListener('click', () => openModal(index));
+        });
+
+        modalClose.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
