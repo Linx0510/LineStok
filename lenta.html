@@ -900,18 +900,8 @@
             // Отображение состояния чекбокса родителя
             if (cat.indeterminate) {
                 checkSpan.classList.add('indeterminate');
-                checkSpan.innerHTML = '';
-                checkSpan.style.background = '#white';
-                checkSpan.style.borderColor = '#535D5A';
             } else if (cat.selected) {
-                checkSpan.innerHTML = '✓';
-                checkSpan.style.background = '#535D5A';
-                checkSpan.style.borderColor = '#535D5A';
-                checkSpan.style.color = 'white';
-            } else {
-                checkSpan.innerHTML = '';
-                checkSpan.style.background = '#FFFFFF';
-                checkSpan.style.borderColor = '#798783';
+                checkSpan.classList.add('checked');
             }
 
             const nameSpan = document.createElement('span');
@@ -981,14 +971,7 @@
                     const subCheck = document.createElement('span');
                     subCheck.className = 'sub-check';
                     if (sub.selected) {
-                        checkSpan.innerHTML = '✓';
-                        checkSpan.style.background = '#535D5A';
-                        checkSpan.style.borderColor = '#535D5A';
-                        checkSpan.style.color = 'white';
-                    } else {
-                        subCheck.innerHTML = '';
-                        checkSpan.style.background = '#FFFFFF';
-                        checkSpan.style.borderColor = '#798783';
+                        subCheck.classList.add('checked');
                     }
                     
                     const subLabel = document.createElement('span');
