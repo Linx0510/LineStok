@@ -473,3 +473,83 @@ nav{
   gap: 24px;
   padding-bottom: 40px;
 }
+.vacancy-layout {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 24px;
+  align-items: start;
+}
+
+.vacancy-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.vacancy-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 2px 3px 15px 0 rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vacancy-top {display:flex;justify-content:space-between;align-items:center;}
+.vacancy-badge {font-family:'Montserrat';font-size:12px;font-weight:600;background:#C5DDD5;padding:6px 12px;border-radius:20px;color:#2D3231;}
+.vacancy-date {font-family:'Montserrat';font-size:12px;color:#798783;}
+.vacancy-card h1,.vacancy-card h3 {font-family:'Montserrat';font-weight:700;color:#2D3231;}
+.vacancy-card h1 {font-size:26px;line-height:1.2;}
+.vacancy-card h3 {font-size:20px;}
+.vacancy-company,.vacancy-desc,.vacancy-card p {font-family:'Montserrat';color:#535D5A;}
+.vacancy-salary,.vacancy-card strong {font-family:'Montserrat';font-weight:700;color:#2E3E34;font-size:18px;}
+.vacancy-tags {display:flex;gap:10px;flex-wrap:wrap;}
+.vacancy-tags span {background:#F1F3F3;border-radius:20px;padding:6px 12px;font-family:'Montserrat';font-size:12px;font-weight:600;color:#535D5A;}
+.respond-btn {border:none;background:#535D5A;color:#F3F7F6;border-radius:20px;padding:12px 20px;font-family:'Montserrat';font-weight:600;cursor:pointer;width:max-content;}
+.respond-btn:hover {background:#2D3231;}
+.vacancy-list {display:flex;flex-direction:column;gap:12px;}
+
+.filter-container {
+    width: 350px;
+    margin-left: auto;
+    background: #FFFFFF;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    height: max-content;
+    box-shadow: 2px 3px 15px 0px rgba(0, 0, 0, 0.1);
+}
+.filter-header {display:flex;align-items:center;padding:5px 15px;justify-content:space-between;}
+.filter-header h2 {font-family:'Montserrat';font-size:14px;font-weight:600;color:var(--main-1);}
+.price-filter {padding:0 15px;display:flex;flex-direction:column;gap:10px;}
+.price-filter label {font-family:'Montserrat';font-size:12px;font-weight:600;color:#535D5A;}
+.price-input-row {display:flex;gap:10px;align-items:center;}
+#priceRange {flex:1;accent-color:#535D5A;}
+#priceMax {width:120px;border:1px solid #d0d7d5;border-radius:12px;padding:8px 10px;font-family:'Montserrat';font-size:12px;}
+.filter-list {padding:0 16px;display:flex;flex-direction:column;max-height:350px;overflow-y:auto;gap:15px;}
+.category-item{display:flex;flex-direction:column;gap:10px;}
+.category-main{display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.category-left{display:flex;align-items:center;gap:10px;flex:1;}
+.custom-check,.sub-check{width:15px;height:15px;background:#fff;border:1.5px solid var(--main0);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;position:relative;}
+.category-name,.sub-label{font-family:'Montserrat';font-size:14px;font-weight:500;color:var(--main-1);}
+.chevron{font-family:'Montserrat';font-size:15px;font-weight:800;color:var(--main-1);transition:transform .2s;}
+.category-item.open .chevron{transform:rotate(180deg);}
+.subcategory-list{display:none;padding-left:20px;flex-direction:column;gap:10px;}
+.category-item.open .subcategory-list{display:flex;}
+.sub-item{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.custom-check.indeterminate{background:rgba(197,221,213,.35);border-color:var(--main-1);}
+.custom-check.indeterminate::after{content:'';width:8px;height:2px;border-radius:999px;background:var(--main-1);}
+.custom-check.checked,.sub-check.checked{background:var(--main-1);border-color:var(--main-1);}
+.custom-check.checked::after,.sub-check.checked::after{content:'';width:5px;height:9px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg) translate(-1px,-1px);}
+.filter-footer{padding:0 15px;display:flex;flex-direction:column;gap:10px;}
+.selected-header{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.selected-counter{font-family:'Montserrat';font-size:12px;font-weight:600;color:#677486;}
+.reset-btn-bottom{background:#F0F2F5;border:none;padding:8px 20px;font-family:'Montserrat';font-size:12px;font-weight:600;color:#2C3E50;cursor:pointer;border-radius:20px;}
+.selected-items-list{display:flex;flex-wrap:wrap;gap:10px;max-height:150px;overflow-y:auto;}
+.selected-tag{background:var(--main0);border-radius:20px;padding:5px 13px;font-family:'Montserrat';font-size:12px;font-weight:600;color:var(--mainwhite);}
+.empty-selected{color:#A0AABA;font-family:'Montserrat';font-size:12px;font-weight:600;text-align:center;width:100%;}
