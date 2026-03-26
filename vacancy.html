@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Вакансии</title>
+  <link rel="stylesheet" href="vacancy.css" />
+</head>
+<body>
+  <main class="vacancy-page">
+    <section class="vacancy-list">
+      <article class="vacancy-card">
+        <div class="vacancy-head">
+          <div>
+            <h1>Плагин оплаты для webayst shop script 10</h1>
+            <p class="vacancy-desc">Необходимо написать плагин для shop script версии 10+ Платёжная система - platega, документация... <a href="#">Показать полностью</a></p>
+          </div>
+          <div class="vacancy-budget">
+            <p>Желаемый бюджет: <span>до 9 000 ₽</span></p>
+            <p class="muted">Допустимый: до 27 000 ₽</p>
+          </div>
+        </div>
+
+        <div class="vacancy-customer">
+          <div class="avatar"></div>
+          <div class="customer-meta">
+            <p>Покупатель: <a href="#">ojeeva</a></p>
+            <p>Размещено проектов на бирже: 7</p>
+            <p>Нанято: 50%</p>
+          </div>
+        </div>
+
+        <div class="vacancy-footer">
+          <p>Осталось: 1 д. 23 ч. &nbsp;&nbsp;Предложений: 0</p>
+          <p class="seen">✓ ПРОСМОТРЕНО</p>
+        </div>
+      </article>
+    </section>
+
+    <aside class="filter-container" id="filterWidget">
+      <div class="filter-header">
+        <h2>Фильтр</h2>
+      </div>
+
+      <div class="price-filter">
+        <div class="price-head">
+          <span>Цена</span>
+          <span>0 — <span id="priceMaxLabel">100000</span> ₽</span>
+        </div>
+        <input id="priceRange" type="range" min="0" max="100000" step="500" value="100000" />
+        <div class="price-input-wrap">
+          <label for="priceMax">До</label>
+          <input id="priceMax" type="number" min="0" max="100000" value="100000" />
+          <span>₽</span>
+        </div>
+      </div>
+
+      <div class="filter-list" id="filterList"></div>
+
+      <div class="filter-footer">
+        <div class="selected-items-list" id="selectedItemsList"></div>
+        <div class="selected-header">
+          <span class="selected-counter">Выбрано: <span id="selectedCount">0</span></span>
+          <button class="reset-btn-bottom" id="resetAllBtn">Сбросить всё</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const categoriesData = [
+      {
+        id: 'dev', name: 'Разработка', selected: false, indeterminate: false, open: false,
+        subcategories: [
+          { id: 'web', name: 'Веб-разработка', selected: false },
+          { id: 'mobile', name: 'Мобильные приложения', selected: false },
+          { id: 'plugins', name: 'Плагины и интеграции', selected: false }
+        ]
+      },
+      {
+        id: 'design', name: 'Дизайн', selected: false, indeterminate: false, open: false,
+        subcategories: [
+          { id: 'ui', name: 'UI/UX', selected: false },
+          { id: 'logo', name: 'Логотипы', selected: false }
+        ]
+      },
+      { id: 'support', name: 'Поддержка и доработки', selected: false, indeterminate: false, open: false, subcategories: [] }
+    ];
+
+    let filterData = JSON.parse(JSON.stringify(categoriesData));
+
+    function recalcAllParents() {
+      for (const cat of filterData) {
+        if (cat.subcategories?.length) {
+          const allSelected = cat.subcategories.every(s => s.selected);
+          const someSelected = cat.subcategories.some(s => s.selected);
+          cat.selected = allSelected;
+          cat.indeterminate = someSelected && !allSelected;
+        } else {
+          cat.indeterminate = false;
+        }
+      }
+    }
+
+    function getSelectedItems() {
+      const selected = [];
+      for (const cat of filterData) {
+        if (cat.subcategories?.length) {
+          for (const sub of cat.subcategories) {
+            if (sub.selected) selected.push({ id: sub.id, name: sub.name, type: 'sub' });
+          }
+        } else if (cat.selected) {
+          selected.push({ id: cat.id, name: cat.name, type: 'category' });
+        }
+      }
+      return selected;
+    }
+
+    function updateSelectedDisplay() {
+      const selectedItems = getSelectedItems();
+      document.getElementById('selectedCount').innerText = selectedItems.length;
+      const list = document.getElementById('selectedItemsList');
+      if (!selectedItems.length) {
+        list.innerHTML = '<div class="empty-selected">Ничего не выбрано</div>';
+        return;
+      }
+      list.innerHTML = selectedItems
+        .map(i => `<div class="selected-tag"><span>${i.name}</span></div>`)
+        .join('');
+    }
+
+    function renderFilter() {
+      const container = document.getElementById('filterList');
+      container.innerHTML = '';
+
+      for (const cat of filterData) {
+        const catDiv = document.createElement('div');
+        catDiv.className = 'category-item' + (cat.open ? ' open' : '');
+
+        const mainRow = document.createElement('div');
+        mainRow.className = 'category-main';
+
+        const left = document.createElement('div');
+        left.className = 'category-left';
+
+        const check = document.createElement('span');
+        check.className = 'custom-check';
+        if (cat.selected) check.classList.add('checked');
+        if (cat.indeterminate) check.classList.add('indeterminate');
+
+        const name = document.createElement('span');
+        name.className = 'category-name';
+        name.textContent = cat.name;
+
+        left.append(check, name);
+        mainRow.append(left);
+
+        const hasSub = cat.subcategories?.length > 0;
+        if (hasSub) {
+          const chev = document.createElement('span');
+          chev.className = 'chevron';
+          chev.textContent = '⌵';
+          mainRow.append(chev);
+
+          mainRow.addEventListener('click', (e) => {
+            if (e.target === check || e.target === name) return;
+            cat.open = !cat.open;
+            renderFilter();
+          });
+        }
+
+        const toggleCategory = (e) => {
+          e.stopPropagation();
+          if (hasSub) {
+            const nextValue = !(cat.selected && !cat.indeterminate);
+            cat.subcategories.forEach(s => s.selected = nextValue);
+          } else {
+            cat.selected = !cat.selected;
+          }
+          recalcAllParents();
+          renderFilter();
+          updateSelectedDisplay();
+        };
+
+        check.addEventListener('click', toggleCategory);
+        name.addEventListener('click', toggleCategory);
+
+        catDiv.append(mainRow);
+
+        if (hasSub) {
+          const subList = document.createElement('div');
+          subList.className = 'subcategory-list';
+          for (const sub of cat.subcategories) {
+            const subItem = document.createElement('div');
+            subItem.className = 'sub-item';
+
+            const subCheck = document.createElement('span');
+            subCheck.className = 'sub-check' + (sub.selected ? ' checked' : '');
+            const subLabel = document.createElement('span');
+            subLabel.className = 'sub-label';
+            subLabel.textContent = sub.name;
+
+            const toggleSub = (e) => {
+              e.stopPropagation();
+              sub.selected = !sub.selected;
+              recalcAllParents();
+              renderFilter();
+              updateSelectedDisplay();
+            };
+
+            subCheck.addEventListener('click', toggleSub);
+            subLabel.addEventListener('click', toggleSub);
+
+            subItem.append(subCheck, subLabel);
+            subList.append(subItem);
+          }
+          catDiv.append(subList);
+        }
+
+        container.append(catDiv);
+      }
+    }
+
+    function resetAllFilters() {
+      filterData = JSON.parse(JSON.stringify(categoriesData));
+      renderFilter();
+      updateSelectedDisplay();
+    }
+
+    const priceRange = document.getElementById('priceRange');
+    const priceMax = document.getElementById('priceMax');
+    const priceMaxLabel = document.getElementById('priceMaxLabel');
+
+    function syncPrice(value) {
+      const normalized = Math.max(0, Math.min(100000, Number(value) || 0));
+      priceRange.value = normalized;
+      priceMax.value = normalized;
+      priceMaxLabel.textContent = normalized.toLocaleString('ru-RU');
+    }
+
+    priceRange.addEventListener('input', (e) => syncPrice(e.target.value));
+    priceMax.addEventListener('input', (e) => syncPrice(e.target.value));
+
+    document.getElementById('resetAllBtn').addEventListener('click', resetAllFilters);
+
+    renderFilter();
+    updateSelectedDisplay();
+    syncPrice(100000);
+  </script>
+</body>
+</html>
