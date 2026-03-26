@@ -474,6 +474,41 @@ nav{
   padding-bottom: 40px;
 }
 
+.profile-tabs{
+  display: flex;
+  gap: 10px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: 0 4px 18px rgba(45, 50, 49, 0.08);
+}
+
+.profile-tab{
+  border: 1px solid #DCE5E2;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 8px 14px;
+  font-family: 'Montserrat';
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--main-1);
+  cursor: pointer;
+}
+
+.profile-tab.is-active{
+  background: var(--main-1);
+  color: var(--mainwhite);
+  border-color: var(--main-1);
+}
+
+.tab-panel{
+  display: none;
+}
+
+.tab-panel.is-active{
+  display: flex;
+}
+
 .profile-section{
   background: #FFFFFF;
   border-radius: 18px;
@@ -482,6 +517,83 @@ nav{
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+
+.summary-section{
+  gap: 20px;
+}
+
+.summary-top{
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.summary-cover{
+  width: 100%;
+  display: block;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.summary-user{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.summary-avatar{
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+}
+
+.summary-user-info h1{
+  font-family: 'Montserrat';
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--main-2);
+  margin-bottom: 4px;
+}
+
+.summary-user-info p{
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--main-1);
+  margin-bottom: 2px;
+}
+
+.summary-user-info span{
+  font-family: 'Montserrat';
+  font-size: 13px;
+  color: var(--main0);
+}
+
+.summary-stats{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summary-stat-card{
+  background: #F8FAF9;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid #E0E8E5;
+}
+
+.summary-stat-card h3{
+  font-family: 'Montserrat';
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--main-2);
+  margin-bottom: 6px;
+}
+
+.summary-stat-card p{
+  font-family: 'Montserrat';
+  font-size: 13px;
+  color: var(--main0);
 }
 
 .section-header{
@@ -649,6 +761,10 @@ nav{
   .navigation{display:none;}
   .main-content{margin-left:0;width:100%;}
   .notifications-grid,
-  .portfolio-grid{grid-template-columns: 1fr;}
+  .portfolio-grid,
+  .summary-stats{grid-template-columns: 1fr;}
   main{margin-top:70px;}
+  .profile-tabs{
+    flex-wrap: wrap;
+  }
 }
