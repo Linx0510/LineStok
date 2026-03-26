@@ -397,6 +397,7 @@
                 <div class="selected-items-list" id="selectedItemsList">
                 </div>
                 <div class="selected-header">
+                    <span class="selected-counter">Выбрано: <span id="selectedCount">0</span></span>
                     <button class="reset-btn-bottom" id="resetAllBtn">⟳ Сбросить всё</button>
                 </div>
             </div>
@@ -793,11 +794,13 @@
         const selectedCountSpan = document.getElementById('selectedCount');
         const selectedItemsContainer = document.getElementById('selectedItemsList');
         
-        if (!selectedCountSpan || !selectedItemsContainer) return;
+        if (!selectedItemsContainer) return;
         
         const selectedItems = getSelectedItems();
         const count = selectedItems.length;
-        selectedCountSpan.innerText = count;
+        if (selectedCountSpan) {
+            selectedCountSpan.innerText = count;
+        }
         
         if (count === 0) {
             selectedItemsContainer.innerHTML = '<div class="empty-selected">Ничего не выбрано</div>';
