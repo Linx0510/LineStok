@@ -402,6 +402,34 @@
                 </div>
             </div>
         </div>
+        <div id="reportModal" class="report-modal" aria-hidden="true">
+            <div class="report-modal-overlay" onclick="hideReportModal()"></div>
+            <div class="report-modal-content" role="dialog" aria-modal="true" aria-labelledby="reportModalTitle">
+                <button class="report-modal-close" type="button" onclick="hideReportModal()" aria-label="Закрыть">&times;</button>
+                <h2 id="reportModalTitle">Пожаловаться на работу</h2>
+
+                <form action="/works/report" method="POST" class="report-form" id="reportForm">
+                    <div class="report-form-group">
+                        <label for="reason">Причина жалобы</label>
+                        <select id="reason" name="reason" required>
+                            <option value="">Выберите причину</option>
+                            <option value="copyright">Нарушение авторских прав</option>
+                            <option value="inappropriate">Неприемлемое содержание</option>
+                            <option value="spam">Спам</option>
+                            <option value="offensive">Оскорбительный контент</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="report-form-group" id="otherReason" style="display: none;">
+                        <label for="otherReasonText">Опишите причину</label>
+                        <textarea id="otherReasonText" name="other_reason" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="report-submit-btn">Отправить жалобу</button>
+                </form>
+            </div>
+        </div>
     </main>
 <script>
     (function() {
@@ -1025,6 +1053,75 @@
     }
 
     init();
+</script>
+<script>
+    const reportModal = document.getElementById('reportModal');
+    const reportForm = document.getElementById('reportForm');
+    const reasonSelect = document.getElementById('reason');
+    const otherReasonBlock = document.getElementById('otherReason');
+    const otherReasonText = document.getElementById('otherReasonText');
+    const complainButtons = document.querySelectorAll('.btn-complain');
+
+    function showReportModal(workId) {
+        if (!reportModal) return;
+
+        if (reportForm) {
+            reportForm.action = workId ? `/works/${workId}/report` : '/works/report';
+        }
+
+        reportModal.classList.add('is-open');
+        reportModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    }
+
+    function hideReportModal() {
+        if (!reportModal) return;
+
+        reportModal.classList.remove('is-open');
+        reportModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+
+        if (reportForm) {
+            reportForm.reset();
+        }
+
+        if (otherReasonBlock) {
+            otherReasonBlock.style.display = 'none';
+        }
+
+        if (otherReasonText) {
+            otherReasonText.removeAttribute('required');
+        }
+    }
+
+    complainButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            showReportModal(button.dataset.workId || '');
+        });
+    });
+
+    if (reasonSelect) {
+        reasonSelect.addEventListener('change', () => {
+            const isOtherReason = reasonSelect.value === 'other';
+            if (otherReasonBlock) {
+                otherReasonBlock.style.display = isOtherReason ? 'flex' : 'none';
+            }
+            if (otherReasonText) {
+                if (isOtherReason) {
+                    otherReasonText.setAttribute('required', 'required');
+                } else {
+                    otherReasonText.removeAttribute('required');
+                    otherReasonText.value = '';
+                }
+            }
+        });
+    }
+
+    window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && reportModal && reportModal.classList.contains('is-open')) {
+            hideReportModal();
+        }
+    });
 </script>
 </body>
 </html>
