@@ -274,6 +274,34 @@
                 </div>
             </div>
         </div>
+        <div id="reportModal" class="report-modal" aria-hidden="true">
+            <div class="report-modal-overlay" onclick="hideReportModal()"></div>
+            <div class="report-modal-content" role="dialog" aria-modal="true" aria-labelledby="reportModalTitle">
+                <button class="report-modal-close" type="button" onclick="hideReportModal()" aria-label="Закрыть">&times;</button>
+                <h2 id="reportModalTitle">Пожаловаться на работу</h2>
+
+                <form action="" method="POST" class="report-form" id="reportForm">
+                    <div class="report-form-group">
+                        <label for="reason">Причина жалобы</label>
+                        <select id="reason" name="reason" required>
+                            <option value="">Выберите причину</option>
+                            <option value="copyright">Нарушение авторских прав</option>
+                            <option value="inappropriate">Неприемлемое содержание</option>
+                            <option value="spam">Спам</option>
+                            <option value="offensive">Оскорбительный контент</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="report-form-group" id="otherReason" style="display: none;">
+                        <label for="otherReasonText">Опишите причину</label>
+                        <textarea id="otherReasonText" name="other_reason" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="report-submit-btn">Отправить жалобу</button>
+                </form>
+            </div>
+        </div>
     </main>
 
     <div class="image-modal" id="imageModal" aria-hidden="true">
