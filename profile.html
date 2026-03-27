@@ -234,6 +234,7 @@
                             <h1>Лиана Сисенова</h1>
                             <p class="proff">UI/UX Designer</p>
                             <p class="email">Linx05@yandex.ru</p>
+                            <button class="summary-edit-btn" type="button" data-open-profile-modal>Редактировать профиль</button>
                         </div>
                     </div>
                 </div>
@@ -285,7 +286,7 @@
             <section id="portfolio-section" class="profile-section portfolio-section tab-panel">
                 <div class="section-header">
                     <h2>Портфолио</h2>
-                    <button class="section-action">+ Добавить проект</button>
+                    <button class="section-action" type="button" data-open-project-modal>+ Добавить проект</button>
                 </div>
                 <div class="section-grid portfolio-grid">
                     <article class="portfolio-card">
@@ -458,6 +459,50 @@
             </section>
         </div>
     </main>
+    <div id="projectModal" class="profile-modal" aria-hidden="true">
+        <div class="profile-modal-overlay" data-close-profile-modal></div>
+        <div class="profile-modal-content" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+            <button class="profile-modal-close" type="button" aria-label="Закрыть" data-close-profile-modal>&times;</button>
+            <h2 id="projectModalTitle">Добавить проект</h2>
+            <form class="profile-modal-form">
+                <div class="profile-modal-group">
+                    <label for="projectName">Название проекта</label>
+                    <input id="projectName" type="text" placeholder="Введите название проекта">
+                </div>
+                <div class="profile-modal-group">
+                    <label for="projectTags">Теги</label>
+                    <input id="projectTags" type="text" placeholder="Например: Логотип, UI/UX">
+                </div>
+                <div class="profile-modal-group">
+                    <label for="projectDescription">Описание</label>
+                    <textarea id="projectDescription" rows="4" placeholder="Кратко опишите проект"></textarea>
+                </div>
+                <button class="profile-modal-submit" type="submit">Сохранить проект</button>
+            </form>
+        </div>
+    </div>
+    <div id="editProfileModal" class="profile-modal" aria-hidden="true">
+        <div class="profile-modal-overlay" data-close-profile-modal></div>
+        <div class="profile-modal-content" role="dialog" aria-modal="true" aria-labelledby="editProfileModalTitle">
+            <button class="profile-modal-close" type="button" aria-label="Закрыть" data-close-profile-modal>&times;</button>
+            <h2 id="editProfileModalTitle">Редактировать профиль</h2>
+            <form class="profile-modal-form">
+                <div class="profile-modal-group">
+                    <label for="profileName">Имя и фамилия</label>
+                    <input id="profileName" type="text" value="Лиана Сисенова">
+                </div>
+                <div class="profile-modal-group">
+                    <label for="profileSpeciality">Специализация</label>
+                    <input id="profileSpeciality" type="text" value="UI/UX Designer">
+                </div>
+                <div class="profile-modal-group">
+                    <label for="profileAbout">О себе</label>
+                    <textarea id="profileAbout" rows="4">млекопитающие, приспособленные к жизни в воде.</textarea>
+                </div>
+                <button class="profile-modal-submit" type="submit">Сохранить изменения</button>
+            </form>
+        </div>
+    </div>
     <script>
         const tabs = document.querySelectorAll('.profile-tab');
         const panels = document.querySelectorAll('.tab-panel');
@@ -475,6 +520,49 @@
                     currentPanel.classList.add('is-active');
                 }
             });
+        });
+
+        const projectModal = document.getElementById('projectModal');
+        const editProfileModal = document.getElementById('editProfileModal');
+        const addProjectButton = document.querySelector('[data-open-project-modal]');
+        const editProfileButton = document.querySelector('[data-open-profile-modal]');
+        const closeModalButtons = document.querySelectorAll('[data-close-profile-modal]');
+        const modalForms = document.querySelectorAll('.profile-modal-form');
+        let activeProfileModal = null;
+
+        function openProfileModal(modal) {
+            if (!modal) return;
+            activeProfileModal = modal;
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeProfileModal() {
+            if (!activeProfileModal) return;
+            activeProfileModal.classList.remove('is-open');
+            activeProfileModal.setAttribute('aria-hidden', 'true');
+            activeProfileModal = null;
+            document.body.classList.remove('modal-open');
+        }
+
+        addProjectButton?.addEventListener('click', () => openProfileModal(projectModal));
+        editProfileButton?.addEventListener('click', () => openProfileModal(editProfileModal));
+        closeModalButtons.forEach((button) => {
+            button.addEventListener('click', closeProfileModal);
+        });
+
+        modalForms.forEach((form) => {
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                closeProfileModal();
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeProfileModal();
+            }
         });
     </script>
 </body>
