@@ -789,6 +789,15 @@ body.modal-open {
     margin-left: 15px;
 }
 
+.report-success-message {
+    min-height: 20px;
+    margin: 0;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 600;
+    color: #3E8B6A;
+}
+
 .report-form-group select,
 .report-form-group textarea {
     width: 100%;
