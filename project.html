@@ -297,6 +297,7 @@
                         <label for="otherReasonText">Опишите причину</label>
                         <textarea id="otherReasonText" name="other_reason" rows="3"></textarea>
                     </div>
+                    <p class="report-success-message" id="reportSuccessMessage" role="status" aria-live="polite"></p>
 
                     <button type="submit" class="report-submit-btn">Отправить жалобу</button>
                 </form>
@@ -348,6 +349,106 @@
                 closeModal();
             }
         });
+    </script>
+    <script>
+        const reportModal = document.getElementById('reportModal');
+        const reportForm = document.getElementById('reportForm');
+        const reasonSelect = document.getElementById('reason');
+        const otherReasonBlock = document.getElementById('otherReason');
+        const otherReasonText = document.getElementById('otherReasonText');
+        const reportSuccessMessage = document.getElementById('reportSuccessMessage');
+        const complainButtons = document.querySelectorAll('.btn-complain');
+
+        function showReportModal(workId) {
+            if (!reportModal) return;
+
+            if (reportForm) {
+                reportForm.action = workId ? `/works/${workId}/report` : '/works/report';
+            }
+            if (reportSuccessMessage) {
+                reportSuccessMessage.textContent = '';
+            }
+
+            reportModal.classList.add('is-open');
+            reportModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        }
+
+        function hideReportModal() {
+            if (!reportModal) return;
+
+            reportModal.classList.remove('is-open');
+            reportModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+
+            if (reportForm) {
+                reportForm.reset();
+            }
+
+            if (otherReasonBlock) {
+                otherReasonBlock.style.display = 'none';
+            }
+
+            if (otherReasonText) {
+                otherReasonText.removeAttribute('required');
+            }
+
+            if (reportSuccessMessage) {
+                reportSuccessMessage.textContent = '';
+            }
+        }
+
+        complainButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                showReportModal(button.dataset.workId || '');
+            });
+        });
+
+        if (reasonSelect) {
+            reasonSelect.addEventListener('change', () => {
+                const isOtherReason = reasonSelect.value === 'other';
+                if (otherReasonBlock) {
+                    otherReasonBlock.style.display = isOtherReason ? 'flex' : 'none';
+                }
+                if (otherReasonText) {
+                    if (isOtherReason) {
+                        otherReasonText.setAttribute('required', 'required');
+                    } else {
+                        otherReasonText.removeAttribute('required');
+                        otherReasonText.value = '';
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && reportModal && reportModal.classList.contains('is-open')) {
+                hideReportModal();
+            }
+        });
+
+        if (reportForm) {
+            reportForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                if (!reportForm.checkValidity()) {
+                    reportForm.reportValidity();
+                    return;
+                }
+
+                if (reportSuccessMessage) {
+                    reportSuccessMessage.textContent = 'Жалоба успешно отправлена!';
+                }
+
+                reportForm.reset();
+                if (otherReasonBlock) {
+                    otherReasonBlock.style.display = 'none';
+                }
+                if (otherReasonText) {
+                    otherReasonText.removeAttribute('required');
+                }
+            });
+        }
     </script>
 </body>
 </html>
