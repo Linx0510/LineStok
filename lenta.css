@@ -991,3 +991,126 @@ nav{
     font-weight: 600;
     text-align: center;
 }
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.report-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1300;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.report-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.report-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(45, 50, 49, 0.45);
+}
+
+.report-modal-content {
+    position: relative;
+    width: min(560px, calc(100% - 32px));
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 2px 3px 25px rgba(0, 0, 0, 0.18);
+    z-index: 1;
+}
+
+.report-modal-close {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 30px;
+    line-height: 1;
+    color: var(--main-1);
+    position: absolute;
+    top: 14px;
+    right: 18px;
+}
+
+.report-modal-content h2 {
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--main-2);
+    margin-bottom: 20px;
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.report-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.report-form-group label {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--main-2);
+    margin-left: 15px;
+}
+
+.report-form-group select,
+.report-form-group textarea {
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px var(--main-1);
+    background: inherit;
+    padding: 12px 15px;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--main-2);
+    outline: none;
+}
+
+.report-form-group select:focus,
+.report-form-group textarea:focus {
+    transform: scale(1.02);
+    border: solid 1px var(--main-1);
+    border-radius: 30px;
+    outline: none;
+}
+
+.report-form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.report-submit-btn {
+    border: none;
+    border-radius: 30px;
+    background-color: var(--main-1);
+    color: var(--mainwhite);
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 18px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.report-submit-btn:hover {
+    background-color: #4c5a56;
+}
