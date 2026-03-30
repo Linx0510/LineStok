@@ -226,7 +226,13 @@
         </div>
 
         <section class="orders-dashboard">
-            <div class="orders-column">
+            <div class="orders-tabs" role="tablist" aria-label="Категории заказов">
+                <button class="orders-tab is-active" type="button" role="tab" aria-selected="true" data-tab-target="requests">Запросы</button>
+                <button class="orders-tab" type="button" role="tab" aria-selected="false" data-tab-target="active">Текущие</button>
+                <button class="orders-tab" type="button" role="tab" aria-selected="false" data-tab-target="completed">Завершенные</button>
+            </div>
+
+            <div class="orders-column orders-panel is-active" id="requests" role="tabpanel">
                 <div class="column-header">
                     <h2>Запросы на заказ</h2>
                     <span class="column-count">3 новых</span>
@@ -260,7 +266,7 @@
                 </div>
             </div>
 
-            <div class="orders-column">
+            <div class="orders-column orders-panel" id="active" role="tabpanel">
                 <div class="column-header">
                     <h2>Текущие заказы</h2>
                     <span class="column-count">2 в работе</span>
@@ -275,8 +281,8 @@
                         <p class="order-meta">Дедлайн: 04.04.2026 • Оплачено 50%</p>
                         <p class="order-text">Подготовка desktop/mobile версий, UI-kit и прототипов в Figma.</p>
                         <div class="order-actions">
-                            <button class="action-btn action-btn--primary" type="button">Открыть заказ</button>
-                            <button class="action-btn action-btn--chat" type="button">Чат с заказчиком</button>
+                            <a class="action-btn action-btn--primary" href="myorder-detail.html">Открыть заказ</a>
+                            <a class="action-btn action-btn--chat" href="client-chat.html">Чат с заказчиком</a>
                         </div>
                     </article>
                     <article class="order-card active-card">
@@ -287,14 +293,14 @@
                         <p class="order-meta">Дедлайн: 09.04.2026 • 6/10 баннеров</p>
                         <p class="order-text">Адаптация креативов под VK Ads, Telegram и Yandex с учетом брендбука.</p>
                         <div class="order-actions">
-                            <button class="action-btn action-btn--primary" type="button">Продолжить</button>
-                            <button class="action-btn action-btn--chat" type="button">Чат с заказчиком</button>
+                            <a class="action-btn action-btn--primary" href="myorder-detail.html">Продолжить</a>
+                            <a class="action-btn action-btn--chat" href="client-chat.html">Чат с заказчиком</a>
                         </div>
                     </article>
                 </div>
             </div>
 
-            <div class="orders-column">
+            <div class="orders-column orders-panel" id="completed" role="tabpanel">
                 <div class="column-header">
                     <h2>Завершенные заказы</h2>
                     <span class="column-count">8 закрыто</span>
@@ -322,5 +328,27 @@
         </section>
 
     </main>
+    <script>
+        const orderTabs = document.querySelectorAll('.orders-tab');
+        const orderPanels = document.querySelectorAll('.orders-panel');
+
+        orderTabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tabTarget;
+
+                orderTabs.forEach((item) => {
+                    item.classList.remove('is-active');
+                    item.setAttribute('aria-selected', 'false');
+                });
+
+                orderPanels.forEach((panel) => {
+                    panel.classList.toggle('is-active', panel.id === target);
+                });
+
+                tab.classList.add('is-active');
+                tab.setAttribute('aria-selected', 'true');
+            });
+        });
+    </script>
 </body>
 </html>
