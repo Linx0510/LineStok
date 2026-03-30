@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #EDEEF0;
+    color: #2D3231;
+}
+
+.order-page {
+    max-width: 880px;
+    margin: 30px auto;
+    padding: 0 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.back-link {
+    color: #535D5A;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #E3E8E6;
+    border-radius: 16px;
+    padding: 18px;
+}
+
+h1, h2 {
+    margin: 0 0 10px;
+}
+
+p {
+    margin: 0 0 6px;
+    line-height: 1.45;
+}
+
+.order-header span {
+    color: #5F7862;
+    font-weight: 700;
+}
+
+.checklist ul {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.checklist li {
+    margin-bottom: 8px;
+}
+
+.checklist .done {
+    color: #5F7862;
+}
+
+.files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.file-item {
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: #F5F8F7;
+    border: 1px solid #D7E1DD;
+    font-size: 14px;
+}
