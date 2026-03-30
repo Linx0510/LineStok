@@ -650,6 +650,113 @@ nav{
     border-left: 3px solid #535D5A;
 }
 
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.order-steps-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    padding: 20px;
+}
+
+.order-steps-modal.is-open {
+    display: flex;
+}
+
+.order-steps-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 25, 23, 0.46);
+}
+
+.order-steps-modal__content {
+    position: relative;
+    width: min(520px, 100%);
+    background: #FFFFFF;
+    border-radius: 24px;
+    border: 1px solid #D8E4DF;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 24px 50px rgba(47, 60, 54, 0.28);
+}
+
+.order-steps-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    border: none;
+    background: transparent;
+    color: var(--main0);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.order-steps-modal__content h2 {
+    font-family: 'Montserrat';
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--main-2);
+    padding-right: 28px;
+}
+
+.order-steps-modal__subtitle {
+    font-family: 'Montserrat';
+    font-size: 13px;
+    color: var(--main0);
+    line-height: 1.4;
+}
+
+.order-steps-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order-steps-list li {
+    font-family: 'Montserrat';
+    font-size: 13px;
+    color: var(--main-1);
+    background: #F4F8F6;
+    border: 1px solid #D6E3DE;
+    border-radius: 14px;
+    padding: 9px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-steps-list li span {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    background: var(--main-1);
+    color: var(--mainwhite);
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-steps-modal__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
 @media (max-width: 1320px) {
     main {
         padding: 0 80px;
@@ -663,5 +770,9 @@ nav{
 @media (max-width: 1120px) {
     .orders-dashboard {
         width: calc(100% - 195px);
+    }
+
+    .order-steps-modal__content {
+        padding: 24px 18px;
     }
 }
