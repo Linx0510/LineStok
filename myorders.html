@@ -247,7 +247,7 @@
                         <p class="order-meta">Заказчик: Coffee Light • 28.03.2026</p>
                         <p class="order-text">Нужен минималистичный фирменный стиль, вывеска и шаблоны для соцсетей. Срок — до 12 дней.</p>
                         <div class="order-actions">
-                            <button class="action-btn action-btn--primary" type="button">Принять</button>
+                            <button class="action-btn action-btn--primary js-accept-order" type="button">Принять</button>
                             <button class="action-btn" type="button">Отклонить</button>
                         </div>
                     </article>
@@ -259,7 +259,7 @@
                         <p class="order-meta">Заказчик: Market Spark • 27.03.2026</p>
                         <p class="order-text">Нужно сделать 15 карточек для маркетплейса в едином стиле и подготовить PSD/FIG.</p>
                         <div class="order-actions">
-                            <button class="action-btn action-btn--primary" type="button">Принять</button>
+                            <button class="action-btn action-btn--primary js-accept-order" type="button">Принять</button>
                             <button class="action-btn" type="button">Отклонить</button>
                         </div>
                     </article>
@@ -328,9 +328,45 @@
         </section>
 
     </main>
+
+    <div class="order-steps-modal" id="orderStepsModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="orderStepsTitle">
+        <div class="order-steps-modal__overlay" data-modal-close></div>
+        <div class="order-steps-modal__content">
+            <button class="order-steps-modal__close" type="button" aria-label="Закрыть" data-modal-close>×</button>
+            <h2 id="orderStepsTitle">Этапы выполнения заказа</h2>
+            <p class="order-steps-modal__subtitle">После принятия заказа следуйте этапам, чтобы клиент видел прогресс.</p>
+            <ol class="order-steps-list">
+                <li><span>1</span>Бриф и подтверждение требований</li>
+                <li><span>2</span>Создание концепции и первого драфта</li>
+                <li><span>3</span>Согласование и правки с заказчиком</li>
+                <li><span>4</span>Передача финальных файлов и закрытие заказа</li>
+            </ol>
+            <div class="order-steps-modal__actions">
+                <a class="action-btn action-btn--chat" href="client-chat.html">Открыть чат</a>
+                <button class="action-btn action-btn--primary" id="orderStepsConfirm" type="button">Понятно</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         const orderTabs = document.querySelectorAll('.orders-tab');
         const orderPanels = document.querySelectorAll('.orders-panel');
+        const acceptOrderButtons = document.querySelectorAll('.js-accept-order');
+        const orderStepsModal = document.getElementById('orderStepsModal');
+        const modalCloseElements = document.querySelectorAll('[data-modal-close]');
+        const modalConfirmButton = document.getElementById('orderStepsConfirm');
+
+        const openOrderStepsModal = () => {
+            orderStepsModal.classList.add('is-open');
+            orderStepsModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        };
+
+        const closeOrderStepsModal = () => {
+            orderStepsModal.classList.remove('is-open');
+            orderStepsModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+        };
 
         orderTabs.forEach((tab) => {
             tab.addEventListener('click', () => {
@@ -348,6 +384,22 @@
                 tab.classList.add('is-active');
                 tab.setAttribute('aria-selected', 'true');
             });
+        });
+
+        acceptOrderButtons.forEach((button) => {
+            button.addEventListener('click', openOrderStepsModal);
+        });
+
+        modalCloseElements.forEach((element) => {
+            element.addEventListener('click', closeOrderStepsModal);
+        });
+
+        modalConfirmButton.addEventListener('click', closeOrderStepsModal);
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && orderStepsModal.classList.contains('is-open')) {
+                closeOrderStepsModal();
+            }
         });
     </script>
 </body>
