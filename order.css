@@ -15,6 +15,17 @@
   src: url('font/MONTSERRAT-BOLD.TTF') format('truetype');
   font-weight: 700;
 }
+:root {
+  --mainwhite: #F3F7F6;
+  --main2: #C5DDD5;
+  --main1: #C5DDD5;
+  --main0: #798783;
+  --main-1: #535D5A;
+  --main-2: #2D3231;
+  --GREEN-700: #9BB7A0;
+  --GREEN-500: #5F7862;
+  --GREEN-400: #2E3E34;
+}
 
 :root {
   --bg: #edeef0;
@@ -155,4 +166,48 @@ h1 {
   text-decoration: none;
   color: var(--accent);
   font-weight: 600;
+}
+
+
+
+.work-author-section>h3 {
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--GREEN-500);
+}
+
+.user-post-avatar-img{
+    width: 36px;
+    height: 36px;
+}
+
+.author-name {
+    width: 100%;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--main-2);
+}
+
+.author-info {
+    flex: 1;
+}
+.work-author-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+.work-author-link-name{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.work-author-link:hover {
+    background: #E1E1E1;
 }

@@ -784,3 +784,46 @@ body.modal-open {
   color: var(--mainwhite);
   background-color: var(--main-1);
 }
+
+
+.work-author-section>h3 {
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--GREEN-500);
+}
+
+.user-post-avatar-img{
+    width: 36px;
+    height: 36px;
+}
+
+.author-name {
+    width: 100%;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--main-2);
+}
+
+.author-info {
+    flex: 1;
+}
+.work-author-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+.work-author-link-name{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.work-author-link:hover {
+    background: #E1E1E1;
+}
