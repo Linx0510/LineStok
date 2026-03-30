@@ -464,3 +464,169 @@ nav{
 .active_link .dark-ikon{
     display: none;
 }
+
+.orders-dashboard {
+    margin-left: 195px;
+    width: calc(100% - 195px);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    padding-bottom: 32px;
+}
+
+.orders-column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.column-header h2 {
+    font-family: 'Montserrat';
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--main-2);
+}
+
+.column-count {
+    border-radius: 14px;
+    background: #DCE8E3;
+    color: var(--main-1);
+    padding: 5px 10px;
+    font-family: 'Montserrat';
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.column-subtitle {
+    font-family: 'Montserrat';
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--main0);
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.order-card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    padding: 16px;
+    border: 1px solid #E3E8E6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order-card-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.order-card-head h3 {
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--main-2);
+    line-height: 1.3;
+}
+
+.order-price,
+.order-status,
+.order-rate {
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--main-1);
+    white-space: nowrap;
+}
+
+.order-meta {
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--main0);
+}
+
+.order-text {
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--main-1);
+}
+
+.order-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+}
+
+.action-btn {
+    border-radius: 22px;
+    border: 1px solid #C3D4CD;
+    background-color: #F8FBFA;
+    color: var(--main-1);
+    font-family: 'Montserrat';
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 12px;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    border-color: var(--main-1);
+}
+
+.action-btn--primary,
+.action-btn--chat {
+    background-color: var(--main-1);
+    color: var(--mainwhite);
+    border-color: var(--main-1);
+}
+
+.action-btn--primary:hover,
+.action-btn--chat:hover {
+    opacity: 0.88;
+}
+
+.request-card {
+    border-left: 3px solid #A8C3B6;
+}
+
+.active-card {
+    border-left: 3px solid #6E8D79;
+}
+
+.completed-card {
+    border-left: 3px solid #535D5A;
+}
+
+@media (max-width: 1320px) {
+    main {
+        padding: 0 80px;
+    }
+
+    nav {
+        padding: 0 90px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .orders-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
