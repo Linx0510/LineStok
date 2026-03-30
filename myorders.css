@@ -735,6 +735,12 @@ body.modal-open {
     gap: 10px;
 }
 
+.order-steps-list__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .order-steps-list li span {
     width: 24px;
     height: 24px;
@@ -748,6 +754,39 @@ body.modal-open {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+.order-steps-list__input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: var(--main-1);
+    font-family: 'Montserrat';
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.order-steps-list__input::placeholder {
+    color: #829188;
+}
+
+.order-steps-list__remove {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    border: 1px solid #D2DFDA;
+    background: #FFFFFF;
+    color: var(--main0);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.order-steps-list__remove:hover {
+    border-color: #B9CCC4;
+    color: var(--main-2);
 }
 
 .order-steps-modal__actions {
