@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LineStok — Модерация</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header class="admin-header">
+        <a href="index.html" class="logo">LineStok</a>
+        <nav class="admin-nav">
+            <a href="profile.html">Профиль</a>
+            <a href="lenta.html">Лента</a>
+            <a href="admin.html">Админ панель</a>
+            <a href="moderation.html" class="active">Модерация</a>
+            <a href="complaints.html">Жалобы</a>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <section class="page-intro panel">
+            <h1>Модерация проектов</h1>
+            <p>Проверяйте новые проекты, оценивайте соответствие правилам платформы и принимайте решение по публикации.</p>
+        </section>
+
+        <section class="panel moderation-panel full-width">
+            <div class="panel-head">
+                <h3>Очередь на проверку</h3>
+                <button type="button">Проверить все</button>
+            </div>
+            <ul class="item-list">
+                <li class="item-row">
+                    <div>
+                        <h4>Rebrand для SPRRRINT</h4>
+                        <p>Автор: @masha.design · Добавлен 30.03.2026 · Категория: Брендинг</p>
+                    </div>
+                    <div class="actions">
+                        <button class="approve" type="button">Одобрить</button>
+                        <button class="reject" type="button">Отклонить</button>
+                    </div>
+                </li>
+                <li class="item-row">
+                    <div>
+                        <h4>UI Kit для финтех-приложения</h4>
+                        <p>Автор: @pixel.fox · Добавлен 30.03.2026 · Категория: UI/UX</p>
+                    </div>
+                    <div class="actions">
+                        <button class="approve" type="button">Одобрить</button>
+                        <button class="reject" type="button">Отклонить</button>
+                    </div>
+                </li>
+                <li class="item-row">
+                    <div>
+                        <h4>Серия постеров для фестиваля</h4>
+                        <p>Автор: @nik.k · Добавлен 29.03.2026 · Категория: Полиграфия</p>
+                    </div>
+                    <div class="actions">
+                        <button class="approve" type="button">Одобрить</button>
+                        <button class="reject" type="button">Отклонить</button>
+                    </div>
+                </li>
+                <li class="item-row">
+                    <div>
+                        <h4>Иллюстрации для лендинга SaaS</h4>
+                        <p>Автор: @sofia.ill · Добавлен 29.03.2026 · Категория: Иллюстрация</p>
+                    </div>
+                    <div class="actions">
+                        <button class="approve" type="button">Одобрить</button>
+                        <button class="reject" type="button">Отклонить</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

@@ -13,6 +13,8 @@
             <a href="profile.html">Профиль</a>
             <a href="lenta.html">Лента</a>
             <a href="admin.html" class="active">Админ панель</a>
+            <a href="moderation.html">Модерация</a>
+            <a href="complaints.html">Жалобы</a>
         </nav>
     </header>
 
@@ -40,81 +42,52 @@
             </article>
         </section>
 
-        <section class="panel-grid">
-            <article class="panel moderation-panel">
-                <div class="panel-head">
-                    <h3>Модерация проектов</h3>
-                    <button type="button">Проверить все</button>
+        <section class="panel user-growth-panel">
+            <div class="panel-head">
+                <h3>Прирост пользователей за 6 месяцев</h3>
+                <span class="growth-summary">+18.4% к прошлому периоду</span>
+            </div>
+            <div class="chart-wrapper" aria-label="Диаграмма прироста пользователей">
+                <div class="chart-grid"></div>
+                <div class="chart-bars">
+                    <div class="bar-group">
+                        <div class="bar" style="--h: 42%"></div>
+                        <span>Окт</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="--h: 48%"></div>
+                        <span>Ноя</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="--h: 56%"></div>
+                        <span>Дек</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="--h: 64%"></div>
+                        <span>Янв</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="--h: 78%"></div>
+                        <span>Фев</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="--h: 88%"></div>
+                        <span>Мар</span>
+                    </div>
                 </div>
-                <ul class="item-list">
-                    <li class="item-row">
-                        <div>
-                            <h4>Rebrand для SPRRRINT</h4>
-                            <p>Автор: @masha.design · Добавлен 30.03.2026</p>
-                        </div>
-                        <div class="actions">
-                            <button class="approve" type="button">Одобрить</button>
-                            <button class="reject" type="button">Отклонить</button>
-                        </div>
-                    </li>
-                    <li class="item-row">
-                        <div>
-                            <h4>UI Kit для финтех-приложения</h4>
-                            <p>Автор: @pixel.fox · Добавлен 30.03.2026</p>
-                        </div>
-                        <div class="actions">
-                            <button class="approve" type="button">Одобрить</button>
-                            <button class="reject" type="button">Отклонить</button>
-                        </div>
-                    </li>
-                    <li class="item-row">
-                        <div>
-                            <h4>Серия постеров для фестиваля</h4>
-                            <p>Автор: @nik.k · Добавлен 29.03.2026</p>
-                        </div>
-                        <div class="actions">
-                            <button class="approve" type="button">Одобрить</button>
-                            <button class="reject" type="button">Отклонить</button>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+            </div>
+        </section>
 
-            <article class="panel complaints-panel">
-                <div class="panel-head">
-                    <h3>Жалобы пользователей</h3>
-                    <button type="button">Открыть архив</button>
-                </div>
-                <ul class="complaints-list">
-                    <li>
-                        <div>
-                            <h4>Спам в личных сообщениях</h4>
-                            <p>От: @anna.market · На: @artman</p>
-                        </div>
-                        <span class="badge high">Высокий</span>
-                    </li>
-                    <li>
-                        <div>
-                            <h4>Нарушение авторских прав</h4>
-                            <p>От: @lina.studio · На проект #2418</p>
-                        </div>
-                        <span class="badge high">Высокий</span>
-                    </li>
-                    <li>
-                        <div>
-                            <h4>Оскорбительное описание заказа</h4>
-                            <p>От: @mari.des · На заказ #556</p>
-                        </div>
-                        <span class="badge medium">Средний</span>
-                    </li>
-                    <li>
-                        <div>
-                            <h4>Подозрение на мошенничество</h4>
-                            <p>От: @serj.ru · На: @graph.pro</p>
-                        </div>
-                        <span class="badge high">Высокий</span>
-                    </li>
-                </ul>
+        <section class="panel-grid shortcuts-grid">
+            <article class="panel shortcut-card">
+                <h3>Модерация проектов</h3>
+                <p>Отдельная страница со списком работ, фильтрами и быстрыми действиями для команды модераторов.</p>
+                <a class="panel-link" href="moderation.html">Открыть модерацию</a>
+            </article>
+            <article class="panel shortcut-card">
+                <h3>Жалобы пользователей</h3>
+                <p>Очередь жалоб с приоритетами, статусами и историей решений в отдельном разделе.</p>
+                <a class="panel-link" href="complaints.html">Открыть жалобы</a>
             </article>
         </section>
     </main>

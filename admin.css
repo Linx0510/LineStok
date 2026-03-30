@@ -43,7 +43,8 @@ body {
 
 .admin-nav {
     display: flex;
-    gap: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .admin-nav a {
@@ -138,6 +139,20 @@ body {
     cursor: pointer;
 }
 
+.page-intro {
+    margin-bottom: 16px;
+}
+
+.page-intro h1 {
+    margin: 0 0 10px;
+    font-size: 28px;
+}
+
+.page-intro p {
+    margin: 0;
+    color: var(--muted);
+}
+
 .item-list,
 .complaints-list {
     margin: 0;
@@ -212,30 +227,139 @@ body {
     color: var(--warn);
 }
 
+.user-growth-panel {
+    margin-bottom: 18px;
+}
+
+.growth-summary {
+    color: #0f7340;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.chart-wrapper {
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid #e4ece8;
+    padding: 16px;
+    min-height: 250px;
+    background: linear-gradient(180deg, #f8fbfa 0%, #ffffff 100%);
+}
+
+.chart-grid {
+    position: absolute;
+    inset: 16px;
+    background-image: linear-gradient(to top, rgba(77, 93, 88, 0.12) 1px, transparent 1px);
+    background-size: 100% 25%;
+    pointer-events: none;
+}
+
+.chart-bars {
+    position: relative;
+    z-index: 1;
+    height: 218px;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+    align-items: end;
+}
+
+.bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.bar {
+    width: min(52px, 100%);
+    height: var(--h);
+    border-radius: 10px 10px 4px 4px;
+    background: linear-gradient(180deg, #7ba18f 0%, #4d5d58 100%);
+    box-shadow: 0 8px 18px rgba(77, 93, 88, 0.22);
+}
+
+.bar-group span {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.shortcuts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.shortcut-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shortcut-card h3 {
+    margin: 0;
+}
+
+.shortcut-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.panel-link {
+    margin-top: auto;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--brand);
+    background: var(--brand-soft);
+    padding: 10px 12px;
+    border-radius: 10px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.full-width {
+    width: 100%;
+}
+
 @media (max-width: 980px) {
     .stats {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .panel-grid {
+    .panel-grid,
+    .shortcuts-grid {
         grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .admin-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
 
+    .chart-bars {
+        gap: 8px;
+    }
+
+    .bar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
     .stats {
         grid-template-columns: 1fr;
     }
 
     .item-row,
-    .complaints-list li {
+    .complaints-list li,
+    .panel-head {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .panel-head button {
+        width: 100%;
     }
 }
