@@ -336,12 +336,29 @@
             <h2 id="orderStepsTitle">Этапы выполнения заказа</h2>
             <p class="order-steps-modal__subtitle">После принятия заказа следуйте этапам, чтобы клиент видел прогресс.</p>
             <ol class="order-steps-list">
-                <li><span>1</span>Бриф и подтверждение требований</li>
-                <li><span>2</span>Создание концепции и первого драфта</li>
-                <li><span>3</span>Согласование и правки с заказчиком</li>
-                <li><span>4</span>Передача финальных файлов и закрытие заказа</li>
+                <li class="order-steps-list__item">
+                    <span>1</span>
+                    <input class="order-steps-list__input" type="text" value="Бриф и подтверждение требований" aria-label="Этап 1">
+                    <button class="order-steps-list__remove" type="button" aria-label="Удалить этап">×</button>
+                </li>
+                <li class="order-steps-list__item">
+                    <span>2</span>
+                    <input class="order-steps-list__input" type="text" value="Создание концепции и первого драфта" aria-label="Этап 2">
+                    <button class="order-steps-list__remove" type="button" aria-label="Удалить этап">×</button>
+                </li>
+                <li class="order-steps-list__item">
+                    <span>3</span>
+                    <input class="order-steps-list__input" type="text" value="Согласование и правки с заказчиком" aria-label="Этап 3">
+                    <button class="order-steps-list__remove" type="button" aria-label="Удалить этап">×</button>
+                </li>
+                <li class="order-steps-list__item">
+                    <span>4</span>
+                    <input class="order-steps-list__input" type="text" value="Передача финальных файлов и закрытие заказа" aria-label="Этап 4">
+                    <button class="order-steps-list__remove" type="button" aria-label="Удалить этап">×</button>
+                </li>
             </ol>
             <div class="order-steps-modal__actions">
+                <button class="action-btn" id="orderStepsAdd" type="button">+ Добавить этап</button>
                 <a class="action-btn action-btn--chat" href="client-chat.html">Открыть чат</a>
                 <button class="action-btn action-btn--primary" id="orderStepsConfirm" type="button">Понятно</button>
             </div>
@@ -353,8 +370,51 @@
         const orderPanels = document.querySelectorAll('.orders-panel');
         const acceptOrderButtons = document.querySelectorAll('.js-accept-order');
         const orderStepsModal = document.getElementById('orderStepsModal');
+        const orderStepsList = document.querySelector('.order-steps-list');
         const modalCloseElements = document.querySelectorAll('[data-modal-close]');
         const modalConfirmButton = document.getElementById('orderStepsConfirm');
+        const addStepButton = document.getElementById('orderStepsAdd');
+
+        const updateStepNumbers = () => {
+            const steps = orderStepsList.querySelectorAll('.order-steps-list__item');
+
+            steps.forEach((step, index) => {
+                const stepNumber = index + 1;
+                const stepBadge = step.querySelector('span');
+                const stepInput = step.querySelector('.order-steps-list__input');
+
+                stepBadge.textContent = stepNumber;
+                stepInput.setAttribute('aria-label', `Этап ${stepNumber}`);
+            });
+        };
+
+        const createStepItem = (text = '') => {
+            const listItem = document.createElement('li');
+            listItem.className = 'order-steps-list__item';
+            listItem.innerHTML = `
+                <span></span>
+                <input class="order-steps-list__input" type="text" value="${text}" aria-label="Новый этап">
+                <button class="order-steps-list__remove" type="button" aria-label="Удалить этап">×</button>
+            `;
+
+            const removeButton = listItem.querySelector('.order-steps-list__remove');
+            removeButton.addEventListener('click', () => {
+                listItem.remove();
+                updateStepNumbers();
+            });
+
+            return listItem;
+        };
+
+        const bindRemoveButtons = () => {
+            const removeButtons = orderStepsList.querySelectorAll('.order-steps-list__remove');
+            removeButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    button.closest('.order-steps-list__item')?.remove();
+                    updateStepNumbers();
+                });
+            });
+        };
 
         const openOrderStepsModal = () => {
             orderStepsModal.classList.add('is-open');
@@ -395,6 +455,16 @@
         });
 
         modalConfirmButton.addEventListener('click', closeOrderStepsModal);
+
+        addStepButton.addEventListener('click', () => {
+            const newStep = createStepItem('Новый этап');
+            orderStepsList.appendChild(newStep);
+            updateStepNumbers();
+            newStep.querySelector('.order-steps-list__input')?.focus();
+        });
+
+        bindRemoveButtons();
+        updateStepNumbers();
 
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && orderStepsModal.classList.contains('is-open')) {
