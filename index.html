@@ -12,19 +12,19 @@
             <nav>
                 <img src="img/LOGO_index.svg" alt="">
                 <div class="links">
-                    <a href="" class="link">
+                    <a href="#hero" class="link">
                         <p>Главная</p>
                     </a>
-                    <a href="" class="link">
+                    <a href="#contact" class="link">
                         <p>Контакты</p>
                     </a>
-                    <a href="" class="link">
+                    <a href="#platform" class="link">
                         <p>Развитие платформы</p>
                     </a>
-                    <a href="" class="link">
+                    <a href="#cta" class="link">
                         <p>Партнерская программа</p>
                     </a>
-                    <a href="" class="link">
+                    <a href="#footer" class="link">
                         <p>Политика конфиденциальности</p>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>        
         </section>
-        <section class="Linestok">
+        <section class="Linestok" id="platform">
             <div class="line">
                 <h1>Что такое 
                     <br>LineStok? 
@@ -151,7 +151,7 @@
             </div>
             <div class="linestok2026">
                 <img src="img/work_Logo.svg" style="width: 294.59px;" alt="">
-                <p>2026</p>
+                <p id="linestok-year">2026</p>
             </div>
         </section>
         <section class="steps">
@@ -193,7 +193,7 @@
                 </div>
             </div>
         </section>
-        <section class="CTA">
+        <section class="CTA" id="cta">
             <h4>Готовы начать?</h4>
             <p>Присоединяйтесь к тысячам профессионалов <br>и заказчиков уже сегодня. Это бесплатно!</p>
             <div class="buttons">
@@ -205,7 +205,7 @@
                 </button>
             </div>
         </section>
-        <section class="contact">
+        <section class="contact" id="contact">
             <h1>Напишите нам</h1>
             <div class="contact-content">
                 <div class="project">
@@ -246,7 +246,7 @@
                 </form>
             </div>
         </section>
-        <footer>
+        <footer id="footer">
             <nav>
                 <img src="img/LOGO_index.svg" alt="">
                 <div class="links">
@@ -270,7 +270,7 @@
            <div class="foot">
                 <div class="line">
                     <h2 style="color: var(--mainwhite);">вдохновение, <br>качество <br>и результат.</h2>
-                    <p style="color: var(--mainwhite);">© LineStok - Copyright 2026</p>
+                    <p style="color: var(--mainwhite);">© LineStok - Copyright <span id="copyright-year">2026</span></p>
                 </div>
                 <div class="foot_link">
                     <div style="width: 130px;" class="clm_links">
@@ -321,5 +321,70 @@
            </div>
         </footer>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYear = new Date().getFullYear();
+            const copyrightYear = document.getElementById('copyright-year');
+            const linestokYear = document.getElementById('linestok-year');
+            if (copyrightYear) copyrightYear.textContent = currentYear;
+            if (linestokYear) linestokYear.textContent = currentYear;
+
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    const targetId = link.getAttribute('href');
+                    const target = targetId ? document.querySelector(targetId) : null;
+                    if (!target) return;
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            const sections = document.querySelectorAll('main > section');
+            sections.forEach((section) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(28px)';
+                section.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            });
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        sectionObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            sections.forEach((section) => sectionObserver.observe(section));
+
+            const categories = document.querySelectorAll('.categry');
+            let categoryIndex = 0;
+            if (categories.length > 0) {
+                setInterval(() => {
+                    categories.forEach((item) => {
+                        item.style.backgroundColor = '';
+                        item.style.color = '';
+                        item.style.transition = 'all 0.4s ease';
+                    });
+                    const active = categories[categoryIndex];
+                    if (active) {
+                        active.style.backgroundColor = '#2D3231';
+                        active.style.color = '#F3F7F6';
+                    }
+                    categoryIndex = (categoryIndex + 1) % categories.length;
+                }, 1700);
+            }
+
+            const form = document.querySelector('.contact form');
+            if (form) {
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    alert('Спасибо! Ваше сообщение отправлено.');
+                    form.reset();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
