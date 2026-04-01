@@ -12,19 +12,19 @@
             <nav>
                 <img src="img/Logo_nav.svg" alt="">
                 <div class="links">
-                    <a href="" class="link">
+                    <a href="#hero" class="link">
                         <p>Главная</p>
                     </a>
-                    <a href="" class="link">
+                    <a href="#contact" class="link">
                         <p>Контакты</p>
                     </a>
-                    <a href="" class="link">
+                    <a href="#platform" class="link">
                         <p>Развитие платформы</p>
                     </a>
-                    <a href="" class="link">
+                    <a href="#cta" class="link">
                         <p>Партнерская программа</p>
                     </a>
-                    <a href="" class="link">
+                    <a href="#footer" class="link">
                         <p>Политика конфиденциальности</p>
                     </a>
                 </div>
@@ -68,7 +68,7 @@
                 </div>
             </div>        
         </section>
-        <section class="Linestok">
+        <section class="Linestok" id="platform">
             <div class="line">
                 <h1>Что такое 
                     <br>Линити? 
@@ -160,6 +160,7 @@
                 </div>
             </div>
             <div class="linestok2026">
+<<<<<<< HEAD
                 <svg width="147" height="83" viewBox="0 0 147 83" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M-0.000221252 82.9994L76.745 -0.000167847H81.168V82.9994H68.2512V29.5108L22.133 82.9994H-0.000221252Z" fill="white"/>
                     <rect x="96.8418" y="16.5996" width="13.8344" height="19.3666" fill="#FA51A2"/>
@@ -168,6 +169,10 @@
                     <rect x="132.811" y="63.6328" width="13.8344" height="19.3666" fill="#BDF522"/>
                 </svg>
                 <p>2026</p>
+=======
+                <img src="img/work_Logo.svg" style="width: 294.59px;" alt="">
+                <p id="linestok-year">2026</p>
+>>>>>>> 776285dcbcbec423ecb9649429887595e233dc5e
             </div>
         </section>
         <section class="intelligence" aria-labelledby="intelligence-title">
@@ -195,10 +200,17 @@
                 </li>
             </ul>
         </section>
+<<<<<<< HEAD
         <section class="CTA">
             <div class="CTA_content">
                 <h4>Готовы начать?</h4>
                 <p>Присоединяйтесь к тысячам профессионалов <br>и заказчиков уже сегодня. Это бесплатно!</p>
+=======
+        <section class="CTA" id="cta">
+            <h4>Готовы начать?</h4>
+            <p>Присоединяйтесь к тысячам профессионалов <br>и заказчиков уже сегодня. Это бесплатно!</p>
+            <div class="buttons">
+>>>>>>> 776285dcbcbec423ecb9649429887595e233dc5e
                 <button class="btn3">
                     <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.323242 9.83333L11.3232 0.5M11.3232 0.5V10.5M11.3232 0.5H1.01074" stroke="#2D3231"/>
@@ -232,7 +244,7 @@
                 </defs>
             </svg>
         </section>
-        <section class="contact">
+        <section class="contact" id="contact">
             <h1>Напишите нам</h1>
             <div class="contact-content">
                 <div class="project">
@@ -273,7 +285,7 @@
                 </form>
             </div>
         </section>
-        <footer>
+        <footer id="footer">
             <nav>
                 <img src="img/LOGO_index.svg" alt="">
                 <div class="links">
@@ -297,7 +309,7 @@
            <div class="foot">
                 <div class="line">
                     <h2 style="color: var(--mainwhite);">вдохновение, <br>качество <br>и результат.</h2>
-                    <p style="color: var(--mainwhite);">© LineStok - Copyright 2026</p>
+                    <p style="color: var(--mainwhite);">© LineStok - Copyright <span id="copyright-year">2026</span></p>
                 </div>
                 <div class="foot_link">
                     <div style="width: 130px;" class="clm_links">
@@ -348,6 +360,74 @@
            </div>
         </footer>
     </main>
+<<<<<<< HEAD
     <script src="intelligence-demo.js"></script>
+=======
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYear = new Date().getFullYear();
+            const copyrightYear = document.getElementById('copyright-year');
+            const linestokYear = document.getElementById('linestok-year');
+            if (copyrightYear) copyrightYear.textContent = currentYear;
+            if (linestokYear) linestokYear.textContent = currentYear;
+
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    const targetId = link.getAttribute('href');
+                    const target = targetId ? document.querySelector(targetId) : null;
+                    if (!target) return;
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            const sections = document.querySelectorAll('main > section');
+            sections.forEach((section) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(28px)';
+                section.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            });
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        sectionObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            sections.forEach((section) => sectionObserver.observe(section));
+
+            const categories = document.querySelectorAll('.categry');
+            let categoryIndex = 0;
+            if (categories.length > 0) {
+                setInterval(() => {
+                    categories.forEach((item) => {
+                        item.style.backgroundColor = '';
+                        item.style.color = '';
+                        item.style.transition = 'all 0.4s ease';
+                    });
+                    const active = categories[categoryIndex];
+                    if (active) {
+                        active.style.backgroundColor = '#2D3231';
+                        active.style.color = '#F3F7F6';
+                    }
+                    categoryIndex = (categoryIndex + 1) % categories.length;
+                }, 1700);
+            }
+
+            const form = document.querySelector('.contact form');
+            if (form) {
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    alert('Спасибо! Ваше сообщение отправлено.');
+                    form.reset();
+                });
+            }
+        });
+    </script>
+>>>>>>> 776285dcbcbec423ecb9649429887595e233dc5e
 </body>
 </html>
