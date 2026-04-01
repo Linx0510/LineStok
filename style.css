@@ -387,6 +387,7 @@ h3{
   line-height: 100%;
   color: #663ACD;
 }
+
 .plus{
   display: flex;
   padding:  5px 10px;
@@ -932,4 +933,104 @@ footer{
   font-weight: 400;
   line-height: normal;
   color: var(--mainwhite);
+}
+.contact-form {
+  transition: all 0.3s ease;
+}
+
+.success-message {
+  height: 490px;
+  width: 360px;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.success-content {
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.success-icon {
+    margin-bottom: 20px;
+    animation: scaleIn 0.4s ease 0.2s both;
+}
+
+.success-content h3 {
+    font-family: 'UNISANS';
+    font-size: 28px;
+    color: #393939;
+    margin-bottom: 12px;
+}
+
+.success-content p {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 400;
+    color: #767676;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.btn_reset {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: solid 1.5px #CF4386;
+    background-color: #CF4386;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn_reset:hover {
+    background-color: transparent;
+    color: #CF4386;
+    transform: translateY(-2px);
+}
+
+.btn_reset:active {
+    transform: translateY(0);
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.error-message {
+    color: #ff6b6b;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+.form-group.error input,
+.form-group.error textarea {
+    border-bottom-color: #ff6b6b;
 }

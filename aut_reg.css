@@ -35,15 +35,6 @@
 
         :root {
             --mainwhite: #F3F7F6;
-            --main2: #C5DDD5;
-            --main1: #C5DDD5;
-            --main0: #798783;
-            --main-1: #535D5A;
-            --main-2: #2D3231;
-            --GREEN-700: #9BB7A0;
-            --GREEN-500: #5F7862;
-            --GREEN-400: #2E3E34;
-            --Black: #232323;
             --GRAY: #767676;
             --RED: #66011A;
         }
@@ -82,7 +73,7 @@
         }
 
         .form_button {
-            border: 1px solid var(--main-1);
+            border: 1px solid #393939;
             border-radius: 30px;
             font-family: 'Montserrat';
             font-size: 17px;
@@ -98,14 +89,14 @@
 
         .form_button:hover {
             color: var(--mainwhite);
-            background-color: var(--main-1);
-            border: solid 0.8px var(--main-1);
+            background-color: #393939;
+            border: solid 0.8px #393939;
         }
 
         .form_button:active {
             color: var(--mainwhite);
-            background-color: var(--main-2);
-            border: solid 0.8px var(--main-2);
+            background-color: #292929;
+            border: solid 0.8px #292929;
         }
 
         .form_button_back {
@@ -116,7 +107,7 @@
             font-weight: 700;
             color: var(--mainwhite);
             text-align: center;
-            background-color: var(--main-1);
+            background-color: #393939;
             width: 100%;
             padding: 10px 15px;
             transition: all 0.3s;
@@ -125,8 +116,8 @@
 
         .form_button_back:hover {
             color: var(--mainwhite);
-            background-color: var(--main-2);
-            border: solid 0.8px var(--main-2);
+            background-color: #292929;
+            border: solid 0.8px #292929;
         }
 
         .form_button_back:active {
@@ -137,8 +128,8 @@
             height: 46px;
             width: 100%;
             display: flex;
-            border: solid 1px var(--Black);
-            background-color: var(--Black);
+            border: solid 1px #232323;
+            background-color: #232323;
             border-radius: 10px;
             gap: 10px;
             justify-content: center;
@@ -220,7 +211,7 @@
             height: max-content;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .card {
@@ -234,20 +225,27 @@
         /* Боковая панель с анимацией */
         .contaner_page {
             width: 700px;
+            padding: 40px 32px 220px 32px;
             height: 100%;
             background: url(img/fon_cont.svg);
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: start;
+            justify-content: space-between;
             border-radius: 40px;
             gap: 32px;
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             z-index: 2;
             transform: translateX(0);
+        }
+        .cont_header{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* Анимация для боковой панели при переключении на регистрацию - сдвигается влево */
@@ -263,7 +261,7 @@
         h2 {
             font-family: 'UNISANS';
             font-size: 40px;
-            color: var(--main-1);
+            color: #393939;
             text-align: center;
         }
 
@@ -277,7 +275,7 @@
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 4px;
             width: 100%;
         }
 
@@ -285,7 +283,7 @@
             font-family: 'Montserrat';
             font-size: 16px;
             font-weight: 400;
-            color: var(--main-2);
+            color: #292929;
             margin-left: 15px;
         }
 
@@ -294,20 +292,20 @@
             border-top: none;
             border-left: none;
             border-right: none;
-            border-bottom: solid 1px var(--main-1);
+            border-bottom: solid 1px #393939;
             background: inherit;
             padding: 12px 15px;
             font-family: 'Montserrat';
             font-size: 14px;
             font-weight: 400;
-            color: var(--main-2);
+            color: #393939;
             outline: none;
             transition: all 0.3s;
         }
 
         input:focus {
             transform: scale(1.02);
-            border: solid 1px var(--main-1);
+            border: solid 1px #393939;
             border-radius: 30px;
             outline: none;
         }
@@ -319,14 +317,7 @@
             color: var(--GRAY);
         }
 
-        .error-message {
-            font-family: 'Montserrat';
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--RED);
-            margin-left: 12px;
-            margin-top: 5px;
-        }
+  
 
         .or_other {
             display: flex;
@@ -393,19 +384,19 @@
             width: 20px;
             height: 20px;
             background-color: inherit;
-            border: 2px solid var(--main1);
+            border: 2px solid #393939;
             border-radius: 6px;
             transition: all 0.2s ease-in-out;
             flex-shrink: 0;
         }
 
         .custom-checkbox:hover input:not(:disabled) ~ .checkmark {
-            border-color: var(--main-2);
+            border-color: #292929;
         }
 
         .custom-checkbox input:checked ~ .checkmark {
-            background-color: var(--main-1);
-            border-color: var(--main-1);
+            background-color: #393939;
+            border-color: #393939;
         }
 
         .checkmark:after {
@@ -429,14 +420,14 @@
             font-family: 'Montserrat';
             font-size: 12px;
             font-weight: 400;
-            color: var(--main-1);
+            color: #292929;
         }
 
         .link_check {
             font-family: 'Montserrat';
             font-size: 12px;
             font-weight: 400;
-            color: var(--main-0);
+            color: #393939;
             text-decoration: underline;
             cursor: pointer;
         }
@@ -450,20 +441,20 @@
         .code-input {
             width: 60px;
             height: 60px;
-            border-bottom: 1px solid var(--main-1);
+            border-bottom: 1px solid #393939;
             background: inherit;
             padding: 12px;
             font-family: 'Montserrat';
             font-size: 24px;
             font-weight: 600;
             text-align: center;
-            color: var(--main-2);
+            color: #292929;
             outline: none;
         }
 
         .code-input:focus {
             transform: scale(1.05);
-            border-color: var(--main-2);
+            border-color: #292929;
             border: 1px solid;
             border-radius: 20px;
         }
@@ -599,3 +590,19 @@
                 font-size: 14px;
             }
         }
+       
+.error-message {
+    color: #ff6b6b;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+.form-group.error input,
+.form-group.error textarea {
+    border-bottom-color: #ff6b6b;
+}

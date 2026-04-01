@@ -160,7 +160,6 @@
                 </div>
             </div>
             <div class="linestok2026">
-<<<<<<< HEAD
                 <svg width="147" height="83" viewBox="0 0 147 83" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M-0.000221252 82.9994L76.745 -0.000167847H81.168V82.9994H68.2512V29.5108L22.133 82.9994H-0.000221252Z" fill="white"/>
                     <rect x="96.8418" y="16.5996" width="13.8344" height="19.3666" fill="#FA51A2"/>
@@ -169,10 +168,6 @@
                     <rect x="132.811" y="63.6328" width="13.8344" height="19.3666" fill="#BDF522"/>
                 </svg>
                 <p>2026</p>
-=======
-                <img src="img/work_Logo.svg" style="width: 294.59px;" alt="">
-                <p id="linestok-year">2026</p>
->>>>>>> 776285dcbcbec423ecb9649429887595e233dc5e
             </div>
         </section>
         <section class="intelligence" aria-labelledby="intelligence-title">
@@ -200,17 +195,11 @@
                 </li>
             </ul>
         </section>
-<<<<<<< HEAD
         <section class="CTA">
             <div class="CTA_content">
                 <h4>Готовы начать?</h4>
                 <p>Присоединяйтесь к тысячам профессионалов <br>и заказчиков уже сегодня. Это бесплатно!</p>
-=======
-        <section class="CTA" id="cta">
-            <h4>Готовы начать?</h4>
-            <p>Присоединяйтесь к тысячам профессионалов <br>и заказчиков уже сегодня. Это бесплатно!</p>
-            <div class="buttons">
->>>>>>> 776285dcbcbec423ecb9649429887595e233dc5e
+
                 <button class="btn3">
                     <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.323242 9.83333L11.3232 0.5M11.3232 0.5V10.5M11.3232 0.5H1.01074" stroke="#2D3231"/>
@@ -264,11 +253,11 @@
                 <form action="">
                     <div class="form-group">
                         <label for="password">Имя</label>
-                        <input type="text" id="named" name="name" placeholder="Ваше имя" required>
+                        <input type="text" id="named" name="name" placeholder="Ваше имя">
                     </div>
                     <div class="form-group">
                         <label for="password">Почта</label>
-                        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com">
                     </div>
                     <div class="form-group">
                         <label for="text">Сообщение</label>
@@ -283,11 +272,22 @@
                         <p>Отправить</p>
                     </button>
                 </form>
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <div class="success-content">
+                        <svg class="success-icon" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" stroke="#8CBA0B" stroke-width="2" fill="white"/>
+                            <path d="M18 30L26 38L42 22" stroke="#8CBA0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>Сообщение отправлено!</h3>
+                        <p>Спасибо за обращение. Мы свяжемся с вами в ближайшее время.</p>
+                        <button class="btn_reset" id="resetFormBtn">Отправить еще одно сообщение</button>
+                    </div>
+                </div>
             </div>
         </section>
         <footer id="footer">
             <nav>
-                <img src="img/LOGO_index.svg" alt="">
+                <img src="img/Logo_nav.svg" alt="">
                 <div class="links">
                     <a href="" class="link">
                         <p>Главная</p>
@@ -360,9 +360,7 @@
            </div>
         </footer>
     </main>
-<<<<<<< HEAD
     <script src="intelligence-demo.js"></script>
-=======
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const currentYear = new Date().getFullYear();
@@ -399,35 +397,201 @@
                 });
             }, { threshold: 0.2 });
             sections.forEach((section) => sectionObserver.observe(section));
-
-            const categories = document.querySelectorAll('.categry');
-            let categoryIndex = 0;
-            if (categories.length > 0) {
-                setInterval(() => {
-                    categories.forEach((item) => {
-                        item.style.backgroundColor = '';
-                        item.style.color = '';
-                        item.style.transition = 'all 0.4s ease';
-                    });
-                    const active = categories[categoryIndex];
-                    if (active) {
-                        active.style.backgroundColor = '#2D3231';
-                        active.style.color = '#F3F7F6';
-                    }
-                    categoryIndex = (categoryIndex + 1) % categories.length;
-                }, 1700);
-            }
-
-            const form = document.querySelector('.contact form');
-            if (form) {
-                form.addEventListener('submit', (event) => {
-                    event.preventDefault();
-                    alert('Спасибо! Ваше сообщение отправлено.');
-                    form.reset();
-                });
-            }
         });
     </script>
->>>>>>> 776285dcbcbec423ecb9649429887595e233dc5e
+    <script>
+    // Обработка формы обратной связи - валидация ТОЛЬКО при отправке
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('.contact form');
+        const successMessage = document.getElementById('successMessage');
+        const resetBtn = document.getElementById('resetFormBtn');
+        
+        if (form && successMessage) {
+            
+            // Убираем стандартную браузерную валидацию
+            form.setAttribute('novalidate', 'novalidate');
+            
+            // Функция показа ошибки
+            function showError(input, message) {
+                const formGroup = input.closest('.form-group');
+                if (formGroup) {
+                    formGroup.classList.add('error');
+                    let errorDiv = formGroup.querySelector('.error-message');
+                    if (!errorDiv) {
+                        errorDiv = document.createElement('div');
+                        errorDiv.className = 'error-message';
+                        formGroup.appendChild(errorDiv);
+                    }
+                    errorDiv.textContent = message;
+                    input.style.borderBottomColor = '#ff6b6b';
+                }
+            }
+            
+            // Функция очистки ошибок
+            function clearErrors() {
+                document.querySelectorAll('.form-group').forEach(group => {
+                    group.classList.remove('error');
+                    const errorDiv = group.querySelector('.error-message');
+                    if (errorDiv) {
+                        errorDiv.remove();
+                    }
+                    const input = group.querySelector('input, textarea');
+                    if (input) {
+                        input.style.borderBottomColor = '';
+                    }
+                });
+                
+                // Очищаем подсветку чекбокса
+                const checkboxLabel = document.querySelector('.custom-checkbox');
+                if (checkboxLabel) {
+                    checkboxLabel.style.border = '';
+                    checkboxLabel.style.padding = '';
+                    checkboxLabel.style.backgroundColor = '';
+                }
+            }
+            
+            // Функция валидации (запускается только при отправке)
+            function validateForm() {
+                let isValid = true;
+                clearErrors();
+                
+                const nameInput = document.getElementById('named');
+                const emailInput = document.getElementById('email');
+                const messageInput = document.getElementById('additional-info');
+                const checkbox = document.querySelector('.custom-checkbox input');
+                
+                // Проверка имени
+                if (!nameInput.value.trim()) {
+                    showError(nameInput, 'Пожалуйста, введите ваше имя');
+                    isValid = false;
+                } else if (nameInput.value.trim().length < 2) {
+                    showError(nameInput, 'Имя должно содержать не менее 2 символов');
+                    isValid = false;
+                }
+                
+                // Проверка email
+                const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+                if (!emailInput.value.trim()) {
+                    showError(emailInput, 'Пожалуйста, введите email');
+                    isValid = false;
+                } else if (!emailRegex.test(emailInput.value.trim())) {
+                    showError(emailInput, 'Введите корректный email (example@domain.com)');
+                    isValid = false;
+                }
+                
+                // Проверка сообщения
+                if (!messageInput.value.trim()) {
+                    showError(messageInput, 'Пожалуйста, введите ваше сообщение');
+                    isValid = false;
+                } else if (messageInput.value.trim().length < 10) {
+                    showError(messageInput, 'Сообщение должно содержать не менее 10 символов');
+                    isValid = false;
+                }
+                
+                // Проверка чекбокса
+                if (checkbox && !checkbox.checked) {
+                    const checkboxLabel = document.querySelector('.custom-checkbox');
+                    checkboxLabel.style.border = '1px solid #ff6b6b';
+                    checkboxLabel.style.borderRadius = '8px';
+                    checkboxLabel.style.padding = '8px 12px';
+                    checkboxLabel.style.backgroundColor = 'rgba(255, 107, 107, 0.05)';
+                    isValid = false;
+                }
+                
+                return isValid;
+            }
+            
+            // Отправка формы - валидация ТОЛЬКО здесь
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                if (!validateForm()) {
+                    // Встряска формы при ошибке
+                    form.style.animation = 'shake 0.3s ease-in-out';
+                    setTimeout(() => {
+                        form.style.animation = '';
+                    }, 300);
+                    return;
+                }
+                
+                // Собираем данные
+                const formData = {
+                    name: document.getElementById('named').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('additional-info').value,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Сохраняем в localStorage
+                try {
+                    const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+                    submissions.push(formData);
+                    localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+                } catch(e) {
+                    console.log('Storage error:', e);
+                }
+                
+                // Показываем загрузку
+                const submitButton = form.querySelector('.btn_form');
+                const originalButtonText = submitButton.innerHTML;
+                submitButton.innerHTML = '<p>Отправка...</p>';
+                submitButton.disabled = true;
+                
+                // Имитация отправки
+                await new Promise(resolve => setTimeout(resolve, 800));
+                
+                // Успех
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                form.reset();
+                clearErrors();
+                
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+            });
+            
+            // Кнопка "Отправить еще одно"
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function() {
+                    successMessage.style.display = 'none';
+                    form.style.display = 'flex';
+                    form.reset();
+                    clearErrors();
+                    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            }
+            
+            // Убираем ошибки при вводе (но НЕ проверяем валидность)
+            const inputs = ['named', 'email', 'additional-info'];
+            inputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', function() {
+                        const formGroup = this.closest('.form-group');
+                        if (formGroup && formGroup.classList.contains('error')) {
+                            formGroup.classList.remove('error');
+                            const errorDiv = formGroup.querySelector('.error-message');
+                            if (errorDiv) errorDiv.remove();
+                            this.style.borderBottomColor = '';
+                        }
+                    });
+                }
+            });
+            
+            // Чекбокс
+            const checkbox = document.querySelector('.custom-checkbox input');
+            if (checkbox) {
+                checkbox.addEventListener('change', function() {
+                    const checkboxLabel = document.querySelector('.custom-checkbox');
+                    if (checkboxLabel) {
+                        checkboxLabel.style.border = '';
+                        checkboxLabel.style.padding = '';
+                        checkboxLabel.style.backgroundColor = '';
+                    }
+                });
+            }
+        }
+    });
+</script>
 </body>
 </html>
