@@ -61,10 +61,12 @@ main{
 .hero{
   width: 100%;
   display: flex;
-  gap: 150px;
+  gap: 170px;
   border-radius: 20px;
   flex-direction: column;
   background: url(img/hero_bg.svg);
+  background-repeat: no-repeat;
+  object-fit: contain;
   padding:  20px 0;
 }
 nav{
@@ -97,7 +99,7 @@ nav{
   background-color: var(--mainwhite);
 }
 .link:hover p{
-  color: var(--main-2);
+  color: #6B069B;
 }
 .link:active{
   background-color: #BBBBBB;
