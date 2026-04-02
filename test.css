@@ -184,13 +184,14 @@ nav:hover .link {
 }
 header{
     background-color: #FFFFFF;
-    width: 100%;
+    width: 1310px;
     border-radius: 30px;
     padding: 0 20px;
     display: flex;
     height: 55px;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
 }
 
 .search-form {
