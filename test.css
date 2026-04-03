@@ -191,7 +191,6 @@ header{
     height: 55px;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
 }
 
 .search-form {
@@ -346,7 +345,12 @@ header{
     transition: all 0.3s ease;
     z-index: 1000;
 }
-
+.notific:hover .dropdown,
+.user:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
 .dropdown-notific {
     width: 370px;
     display: flex;
