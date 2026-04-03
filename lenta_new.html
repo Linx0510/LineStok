@@ -508,8 +508,17 @@
                     <button type="submit" class="report-submit-btn">Отправить жалобу</button>
                     </div>
                 </form>
-                <div class="report-success-state" id="reportSuccessState" aria-live="polite">
-                    <p class="report-success-message" id="reportSuccessMessage" role="status">Жалоба успешно отправлена!</p>
+        
+                <div class="report-success-state" id="reportSuccessState">
+                    <div class="success-content" id="reportSuccessMessage" role="status">
+                        <svg class="success-icon" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" stroke="#8CBA0B" stroke-width="2" fill="white"/>
+                            <path d="M18 30L26 38L42 22" stroke="#8CBA0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>Сообщение отправлено!</h3>
+                        <p>Спасибо за обращение. Мы свяжемся с вами в ближайшее время.</p>
+                        <button class="btn_reset" id="resetFormBtn">Отправить еще одно сообщение</button>
+                    </div>
                 </div>
             </div>
         </div>
