@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Лента | Креативная навигация</title>
     <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="lenta_new.css">
 </head>
 <body>
-    <main>
-        <nav>
+    <main class="app-shell">
+<nav>
             <a href="index.html" id="logoLink" class="logo-link">
                 <svg class="logo-svg" width="53" height="30" viewBox="0 0 116 66" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M-0.000152588 65.653L60.7073 1.52588e-05H64.2061V65.653H53.9886V23.3433L17.5078 65.653H-0.000152588Z" fill="white"/>
@@ -107,7 +108,7 @@
             </svg>
         </nav>
         <section class="main_content">
-            <header>
+<header>
                 <form action="/works/search" method="GET" class="search-form">
                     <input type="text" name="q" placeholder="Поиск" class="search-form-input">
                     <button type="submit" class="search-form-btn">
@@ -257,6 +258,11 @@
                     </div>
                 </div>
             </header>
+
+
+
+        <section class="main_content">
+
             <div class="main-content">
              
                 <aside class="profile_block">
@@ -287,9 +293,8 @@
                 </aside>
             </div>
         </section>
-    </main>
-
-   <script>
+    
+<script>
         const logoLinkElem = document.getElementById('logoLink');
         const logoSvg = document.querySelector('.logo-link .logo-svg');
         let svgRects = [];
@@ -331,5 +336,8 @@
     </script>
 
 </script>
+
+        </section>
+    </main>
 </body>
 </html>
