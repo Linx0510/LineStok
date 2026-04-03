@@ -488,6 +488,7 @@
                 <h2 id="reportModalTitle">Пожаловаться на работу</h2>
 
                 <form action="/works/report" method="POST" class="report-form" id="reportForm">
+                    <div id="reportFormFields">
                     <div class="report-form-group">
                         <label for="reason">Причина жалобы</label>
                         <select id="reason" name="reason" required>
@@ -504,10 +505,24 @@
                         <label for="otherReasonText">Опишите причину</label>
                         <textarea id="otherReasonText" name="other_reason" rows="3"></textarea>
                     </div>
-                    <p class="report-success-message" id="reportSuccessMessage" role="status" aria-live="polite"></p>
-
                     <button type="submit" class="report-submit-btn">Отправить жалобу</button>
+                    </div>
                 </form>
+                <div class="report-success-state" id="reportSuccessState" aria-live="polite">
+                    <p class="report-success-message" id="reportSuccessMessage" role="status">Жалоба успешно отправлена!</p>
+                </div>
+            </div>
+        </div>
+        <div id="imageViewerModal" class="image-viewer-modal" aria-hidden="true">
+            <div class="image-viewer-overlay" onclick="hideImageViewer()"></div>
+            <div class="image-viewer-content" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+                <button class="image-viewer-close" type="button" onclick="hideImageViewer()" aria-label="Закрыть">&times;</button>
+                <button class="image-viewer-arrow image-viewer-arrow-left" type="button" id="viewerPrev" aria-label="Предыдущее изображение">&#10094;</button>
+                <div class="image-viewer-track-wrap">
+                    <div class="image-viewer-track" id="viewerTrack"></div>
+                </div>
+                <button class="image-viewer-arrow image-viewer-arrow-right" type="button" id="viewerNext" aria-label="Следующее изображение">&#10095;</button>
+                <div class="image-viewer-dots" id="viewerDots"></div>
             </div>
         </div>
         </section>
@@ -791,8 +806,20 @@
 <script>
 (function () {
     const lenta = document.querySelector('.lenta');
+    const imageViewerModal = document.getElementById('imageViewerModal');
+    const viewerTrack = document.getElementById('viewerTrack');
+    const viewerDots = document.getElementById('viewerDots');
+    const viewerPrev = document.getElementById('viewerPrev');
+    const viewerNext = document.getElementById('viewerNext');
 
     if (!lenta) return;
+    let viewerImages = [];
+    let viewerCurrentIndex = 0;
+
+    window.updateModalBodyState = function updateModalBodyState() {
+        const hasOpenModal = Boolean(document.querySelector('.report-modal.is-open, .image-viewer-modal.is-open'));
+        document.body.classList.toggle('modal-open', hasOpenModal);
+    };
 
     function canScroll(el, deltaY) {
         if (!el) return false;
@@ -812,6 +839,89 @@
         lenta.scrollBy({ top: event.deltaY, behavior: 'auto' });
         event.preventDefault();
     }, { passive: false });
+
+    function updateImageViewer() {
+        if (!viewerTrack || !viewerDots) return;
+
+        viewerTrack.style.transform = `translateX(-${viewerCurrentIndex * 100}%)`;
+        Array.from(viewerDots.children).forEach((dot, index) => {
+            dot.classList.toggle('active', index === viewerCurrentIndex);
+        });
+    }
+
+    window.showImageViewer = function showImageViewer(images, startIndex = 0) {
+        if (!imageViewerModal || !viewerTrack || !viewerDots) return;
+
+        viewerImages = images;
+        viewerCurrentIndex = startIndex;
+        viewerTrack.innerHTML = '';
+        viewerDots.innerHTML = '';
+
+        viewerImages.forEach((image, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'image-viewer-slide';
+
+            const img = document.createElement('img');
+            img.src = image.src;
+            img.alt = image.alt || `Изображение ${index + 1}`;
+            slide.appendChild(img);
+            viewerTrack.appendChild(slide);
+
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'dot';
+            dot.setAttribute('aria-label', `Перейти к изображению ${index + 1}`);
+            dot.addEventListener('click', () => {
+                viewerCurrentIndex = index;
+                updateImageViewer();
+            });
+            viewerDots.appendChild(dot);
+        });
+
+        imageViewerModal.classList.add('is-open');
+        imageViewerModal.setAttribute('aria-hidden', 'false');
+        window.updateModalBodyState();
+        updateImageViewer();
+    };
+
+    window.hideImageViewer = function hideImageViewer() {
+        if (!imageViewerModal || imageViewerModal.getAttribute('aria-hidden') === 'true') return;
+
+        imageViewerModal.classList.remove('is-open');
+        imageViewerModal.setAttribute('aria-hidden', 'true');
+        window.updateModalBodyState();
+    };
+
+    if (viewerPrev) {
+        viewerPrev.addEventListener('click', () => {
+            if (!viewerImages.length) return;
+            viewerCurrentIndex = (viewerCurrentIndex - 1 + viewerImages.length) % viewerImages.length;
+            updateImageViewer();
+        });
+    }
+
+    if (viewerNext) {
+        viewerNext.addEventListener('click', () => {
+            if (!viewerImages.length) return;
+            viewerCurrentIndex = (viewerCurrentIndex + 1) % viewerImages.length;
+            updateImageViewer();
+        });
+    }
+
+    window.addEventListener('keydown', (event) => {
+        const viewerOpened = imageViewerModal && imageViewerModal.classList.contains('is-open');
+        if (!viewerOpened) return;
+
+        if (event.key === 'Escape') {
+            window.hideImageViewer();
+        } else if (event.key === 'ArrowLeft' && viewerImages.length) {
+            viewerCurrentIndex = (viewerCurrentIndex - 1 + viewerImages.length) % viewerImages.length;
+            updateImageViewer();
+        } else if (event.key === 'ArrowRight' && viewerImages.length) {
+            viewerCurrentIndex = (viewerCurrentIndex + 1) % viewerImages.length;
+            updateImageViewer();
+        }
+    });
 
     document.querySelectorAll('[data-gallery]').forEach((gallery) => {
         const track = gallery.querySelector('[data-gallery-track]');
@@ -854,6 +964,19 @@
         nextBtn.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % slides.length;
             updateGallery();
+        });
+
+        slides.forEach((slide, index) => {
+            const image = slide.querySelector('img');
+            if (!image) return;
+
+            image.addEventListener('click', () => {
+                const images = slides
+                    .map((gallerySlide) => gallerySlide.querySelector('img'))
+                    .filter(Boolean)
+                    .map((img) => ({ src: img.src, alt: img.alt }));
+                window.showImageViewer(images, index);
+            });
         });
 
         updateGallery();
@@ -1299,6 +1422,8 @@
 <script>
     const reportModal = document.getElementById('reportModal');
     const reportForm = document.getElementById('reportForm');
+    const reportFormFields = document.getElementById('reportFormFields');
+    const reportSuccessState = document.getElementById('reportSuccessState');
     const reasonSelect = document.getElementById('reason');
     const otherReasonBlock = document.getElementById('otherReason');
     const otherReasonText = document.getElementById('otherReasonText');
@@ -1314,10 +1439,18 @@
         if (reportSuccessMessage) {
             reportSuccessMessage.textContent = '';
         }
+        if (reportFormFields) {
+            reportFormFields.style.display = 'flex';
+        }
+        if (reportSuccessState) {
+            reportSuccessState.classList.remove('is-visible');
+        }
 
         reportModal.classList.add('is-open');
         reportModal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('modal-open');
+        if (typeof window.updateModalBodyState === 'function') {
+            window.updateModalBodyState();
+        }
     }
 
     function hideReportModal() {
@@ -1325,7 +1458,9 @@
 
         reportModal.classList.remove('is-open');
         reportModal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('modal-open');
+        if (typeof window.updateModalBodyState === 'function') {
+            window.updateModalBodyState();
+        }
 
         if (reportForm) {
             reportForm.reset();
@@ -1341,6 +1476,12 @@
 
         if (reportSuccessMessage) {
             reportSuccessMessage.textContent = '';
+        }
+        if (reportFormFields) {
+            reportFormFields.style.display = 'flex';
+        }
+        if (reportSuccessState) {
+            reportSuccessState.classList.remove('is-visible');
         }
     }
 
@@ -1384,6 +1525,12 @@
 
             if (reportSuccessMessage) {
                 reportSuccessMessage.textContent = 'Жалоба успешно отправлена!';
+            }
+            if (reportFormFields) {
+                reportFormFields.style.display = 'none';
+            }
+            if (reportSuccessState) {
+                reportSuccessState.classList.add('is-visible');
             }
 
             reportForm.reset();
