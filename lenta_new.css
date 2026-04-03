@@ -1416,6 +1416,7 @@ body.modal-open {
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    align-items: center;
     border: 1px solid #D7DDDC;
     border-radius: 14px;
     padding: 10px 12px;
@@ -1628,4 +1629,42 @@ body.modal-open {
     display: flex;
     gap: 8px;
     z-index: 3;
+}
+
+
+.report-success-state {
+  height: 100%;
+  width: 100%;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.success-content {
+  display: flex;
+  padding: 50px 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-icon {
+    margin-bottom: 20px;
+    animation: scaleIn 0.4s ease 0.2s both;
+}
+
+.success-content h3 {
+    font-family: 'UNISANS';
+    font-size: 28px;
+    color: #393939;
+    margin-bottom: 12px;
+}
+
+.success-content p {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 400;
+    color: #767676;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    width: 380px;
+    text-align: center;
 }
