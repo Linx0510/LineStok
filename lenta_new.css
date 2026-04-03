@@ -1398,6 +1398,62 @@ body.modal-open {
     margin-left: 15px;
 }
 
+.report-reason-label {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 500;
+    color: #292929;
+    margin-left: 15px;
+}
+
+.report-reasons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.report-reason-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border: 1px solid #D7DDDC;
+    border-radius: 14px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.report-reason-item:has(.report-reason-checkbox:checked) {
+    border-color: #8907C5;
+    background-color: rgba(137, 7, 197, 0.06);
+}
+
+.report-reason-checkbox {
+    margin-top: 2px;
+    accent-color: #8907C5;
+}
+
+.report-reason-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.report-reason-title {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 600;
+    color: #292929;
+}
+
+.report-reason-description {
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-weight: 400;
+    color: #5B6160;
+    line-height: 1.35;
+}
+
 .report-success-message {
     min-height: 20px;
     margin: 0;
