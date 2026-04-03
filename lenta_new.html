@@ -898,6 +898,15 @@
     }
 
     document.addEventListener('wheel', (event) => {
+        const openModal = document.querySelector('.report-modal.is-open, .image-viewer-modal.is-open');
+        if (openModal) {
+            const modalScrollable = event.target.closest('.report-modal-content, .image-viewer-content');
+            if (modalScrollable && canScroll(modalScrollable, event.deltaY)) {
+                return;
+            }
+            return;
+        }
+
         const scrollableParent = event.target.closest('.dropdown-notific, .filter-list, .selected-items-list, .lenta');
 
         if (scrollableParent && scrollableParent !== lenta && canScroll(scrollableParent, event.deltaY)) {
