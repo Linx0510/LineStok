@@ -493,17 +493,17 @@
                         <label for="reason">Причина жалобы</label>
                         <select id="reason" name="reason" required>
                             <option value="">Выберите причину</option>
-                            <option value="copyright">Нарушение авторских прав</option>
-                            <option value="inappropriate">Неприемлемое содержание</option>
-                            <option value="spam">Спам</option>
-                            <option value="offensive">Оскорбительный контент</option>
-                            <option value="other">Другое</option>
+                            <option value="spam">Спам — Вводящие в заблуждение или повторяющиеся публикации</option>
+                            <option value="sexual_content">Изображения обнаженного тела, порнография или содержимое сексуального характера — Содержимое сексуального характера с участием взрослых или изображением обнаженного тела, материалами в стиле нон-нюд либо с участием несовершеннолетних или со сценами умышленного злоупотребления ими.</option>
+                            <option value="self_harm">Членовредительство — Расстройства пищевого поведения, нанесение травм себе, суицид</option>
+                            <option value="misinformation">Ложная информация — Ложная информация о здоровье, климате, голосованиях или теории заговора</option>
+                            <option value="hate_or_abuse">Агрессивные действия — Предрассудки, стереотипы, идея превосходства белой расы, оскорбления</option>
+                            <option value="dangerous_goods">Опасные товары — Наркотики, оружие, регулируемые товары</option>
+                            <option value="harassment">Преследование или критика — Оскорбления, угрозы, кибербуллинг, изображения обнаженного тела, опубликованные без разрешения</option>
+                            <option value="violence">Сцены насилия или изображение лиц, причастных к насильственным действиям — Графическое изображение или пропаганда насилия, либо контент, связанный с терроризмом или экстремизмом</option>
+                            <option value="privacy">Нарушение конфиденциальности — Личные фотографии, персональная информация</option>
+                            <option value="intellectual_property">Это моя интеллектуальная собственность — Нарушение авторских прав или прав на товарный знак</option>
                         </select>
-                    </div>
-
-                    <div class="report-form-group" id="otherReason" style="display: none;">
-                        <label for="otherReasonText">Опишите причину</label>
-                        <textarea id="otherReasonText" name="other_reason" rows="3"></textarea>
                     </div>
                     <button type="submit" class="report-submit-btn">Отправить жалобу</button>
                     </div>
@@ -1424,9 +1424,6 @@
     const reportForm = document.getElementById('reportForm');
     const reportFormFields = document.getElementById('reportFormFields');
     const reportSuccessState = document.getElementById('reportSuccessState');
-    const reasonSelect = document.getElementById('reason');
-    const otherReasonBlock = document.getElementById('otherReason');
-    const otherReasonText = document.getElementById('otherReasonText');
     const reportSuccessMessage = document.getElementById('reportSuccessMessage');
     const complainButtons = document.querySelectorAll('.btn-complain');
 
@@ -1466,14 +1463,6 @@
             reportForm.reset();
         }
 
-        if (otherReasonBlock) {
-            otherReasonBlock.style.display = 'none';
-        }
-
-        if (otherReasonText) {
-            otherReasonText.removeAttribute('required');
-        }
-
         if (reportSuccessMessage) {
             reportSuccessMessage.textContent = '';
         }
@@ -1491,22 +1480,7 @@
         });
     });
 
-    if (reasonSelect) {
-        reasonSelect.addEventListener('change', () => {
-            const isOtherReason = reasonSelect.value === 'other';
-            if (otherReasonBlock) {
-                otherReasonBlock.style.display = isOtherReason ? 'flex' : 'none';
-            }
-            if (otherReasonText) {
-                if (isOtherReason) {
-                    otherReasonText.setAttribute('required', 'required');
-                } else {
-                    otherReasonText.removeAttribute('required');
-                    otherReasonText.value = '';
-                }
-            }
-        });
-    }
+
 
     window.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && reportModal && reportModal.classList.contains('is-open')) {
@@ -1534,12 +1508,6 @@
             }
 
             reportForm.reset();
-            if (otherReasonBlock) {
-                otherReasonBlock.style.display = 'none';
-            }
-            if (otherReasonText) {
-                otherReasonText.removeAttribute('required');
-            }
         });
     }
 </script>
