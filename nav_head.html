@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Лента | Креативная навигация</title>
     <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="lenta_new.css">
 </head>
 <body>
-    <main>
-        <nav>
+    <main class="app-shell">
+<nav>
             <a href="index.html" id="logoLink" class="logo-link">
                 <svg class="logo-svg" width="53" height="30" viewBox="0 0 116 66" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M-0.000152588 65.653L60.7073 1.52588e-05H64.2061V65.653H53.9886V23.3433L17.5078 65.653H-0.000152588Z" fill="white"/>
@@ -107,7 +108,7 @@
             </svg>
         </nav>
         <section class="main_content">
-            <header>
+<header>
                 <form action="/works/search" method="GET" class="search-form">
                     <input type="text" name="q" placeholder="Поиск" class="search-form-input">
                     <button type="submit" class="search-form-btn">
@@ -221,7 +222,7 @@
                                             <path d="M35 70C30.2756 70 25.6917 69.0745 21.3761 67.2491C17.2081 65.4862 13.4652 62.9628 10.2512 59.7488C7.03729 56.5348 4.51384 52.7919 2.7509 48.624C0.925511 44.3083 0 39.7245 0 35C0 30.2756 0.925511 25.6918 2.7509 21.3761C4.51384 17.2081 7.03729 13.4652 10.2512 10.2512C13.4652 7.0372 17.2081 4.51376 21.3761 2.75091C25.6917 0.925514 30.2756 0 35 0C39.7245 0 44.3082 0.925514 48.6239 2.75091C52.7919 4.51376 56.5348 7.0372 59.7488 10.2512C62.9627 13.4652 65.4861 17.2081 67.2491 21.3761C69.0745 25.6917 70 30.2756 70 35C70 39.7245 69.0745 44.3082 67.2491 48.624C65.4861 52.7919 62.9627 56.5349 59.7488 59.7488C56.5348 62.9628 52.7919 65.4862 48.6239 67.2491C44.3082 69.0744 39.7246 70 35 70ZM35 2.31754C30.5874 2.31754 26.3073 3.18149 22.2789 4.8854C18.3872 6.53142 14.8918 8.88815 11.89 11.8899C8.88807 14.8918 6.53142 18.3872 4.8854 22.2788C3.1815 26.3073 2.31754 30.5873 2.31754 35C2.31754 39.4126 3.1815 43.6926 4.8854 47.721C6.53142 51.6128 8.88807 55.108 11.89 58.1099C14.8919 61.1118 18.3872 63.4684 22.2789 65.1144C26.3073 66.8183 30.5874 67.6823 35 67.6823C39.4126 67.6823 43.6926 66.8183 47.7212 65.1144C51.6128 63.4684 55.1082 61.1117 58.11 58.1099C61.1119 55.108 63.4686 51.6127 65.1146 47.721C66.8185 43.6926 67.6824 39.4126 67.6824 35C67.6824 30.5874 66.8185 26.3073 65.1146 22.2788C63.4686 18.3871 61.1119 14.8918 58.11 11.8899C55.1081 8.88807 51.6128 6.53142 47.7212 4.8854C43.6926 3.18149 39.4126 2.31754 35 2.31754Z" fill="#393939"/>
                                         </svg>
                                     </div>
-                                    <h3 class="user-name">ADMIN</h3>
+                                    <h3 class="user-name">Лиана Сисенова</h3>
                                     <p class="user-email">Linx05@yandex.ru</p>
                                 </div>
                                 <div class="switch">
@@ -234,9 +235,6 @@
                                 <div class="user-link">
                                     <a href="" class="u-link">
                                         Профиль
-                                    </a>
-                                    <a href="" class="u-link">
-                                        Админ панель
                                     </a>
                                     <a href="" class="u-link">
                                         Настройки
@@ -260,10 +258,14 @@
                     </div>
                 </div>
             </header>
-        </section>
-    </main>
 
-    <script>
+
+
+        <section class="main_content">
+
+        </section>
+    
+<script>
         const logoLinkElem = document.getElementById('logoLink');
         const logoSvg = document.querySelector('.logo-link .logo-svg');
         let svgRects = [];
@@ -350,5 +352,8 @@
         }
     });
 </script>
+
+        </section>
+    </main>
 </body>
 </html>
