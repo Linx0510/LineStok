@@ -807,8 +807,15 @@ header{
             animation: fadeSlideUp 0.5s ease-out;
         }
 
+        .chart-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
         .chart-frame {
-            width: 600px;
+            width: 100%;
+            flex: 1;
             max-width: 100%;
             display: flex;
             flex-direction: column;
@@ -912,11 +919,11 @@ header{
         }
 
         .metric-switch {
-            margin-top: 16px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;
             gap: 10px;
-            flex-wrap: wrap;
+            min-width: 160px;
         }
 
         .metric-btn {
@@ -947,6 +954,9 @@ header{
 
         @media (max-width: 680px) {
             .chart-card { padding: 18px 12px; }
+            .chart-layout {
+                flex-direction: column;
+            }
             .chart-frame { width: 100%; min-width: 280px; }
             .chart-top-controls {
                 align-items: stretch;
@@ -958,6 +968,13 @@ header{
             }
             .period-btn, .metric-btn { font-size: 12px; }
             .metric-btn { padding: 8px 14px; }
+            .metric-switch {
+                width: 100%;
+                min-width: 0;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
 
         @keyframes fadeSlideUp {
