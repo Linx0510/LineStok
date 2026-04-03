@@ -261,22 +261,24 @@
             <div class="main-content">
                 <section class="statistics">
                     <div class="chart-card">
-                        <div class="chart-frame">
-                            <div class="chart-top-controls">
-                                <div class="period-switch">
-                                    <button class="period-btn" data-period="day">День</button>
-                                    <button class="period-btn active" data-period="month">Месяц</button>
-                                    <button class="period-btn" data-period="year">Год</button>
+                        <div class="chart-layout">
+                            <div class="chart-frame">
+                                <div class="chart-top-controls">
+                                    <div class="period-switch">
+                                        <button class="period-btn" data-period="day">День</button>
+                                        <button class="period-btn active" data-period="month">Месяц</button>
+                                        <button class="period-btn" data-period="year">Год</button>
+                                    </div>
+                                    <div class="date-picker-area" id="datePickerContainer"></div>
                                 </div>
-                                <div class="date-picker-area" id="datePickerContainer"></div>
+                                <canvas id="mainChart" width="600" height="380" style="width:600px; height:380px;"></canvas>
                             </div>
-                            <canvas id="mainChart" width="600" height="380" style="width:600px; height:380px;"></canvas>
-                        </div>
 
-                        <div class="metric-switch">
-                            <button class="metric-btn active" data-metric="views">Просмотры</button>
-                            <button class="metric-btn" data-metric="subscriptions">Подписки</button>
-                            <button class="metric-btn" data-metric="deals">Сделки</button>
+                            <div class="metric-switch">
+                                <button class="metric-btn active" data-metric="views">Просмотры</button>
+                                <button class="metric-btn" data-metric="subscriptions">Подписки</button>
+                                <button class="metric-btn" data-metric="deals">Сделки</button>
+                            </div>
                         </div>
                     </div>
                 </section>
