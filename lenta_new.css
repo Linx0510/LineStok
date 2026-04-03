@@ -813,6 +813,9 @@ header{
     line-height: 1;
     cursor: pointer;
     z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
 }
 
 .gallery-arrow-left {
@@ -825,6 +828,38 @@ header{
 
 .gallery-arrow:hover {
     background: rgba(41, 41, 41, 0.9);
+}
+
+.post-gallery:hover .gallery-arrow,
+.post-gallery:focus-within .gallery-arrow {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.gallery-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.dot.active {
+    background: #fff;
+    transform: scale(1.15);
 }
 .post-text-content{
     display: flex;

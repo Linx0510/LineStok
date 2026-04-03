@@ -821,8 +821,29 @@
 
         let currentIndex = 0;
 
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'gallery-dots';
+
+        const dots = slides.map((_, index) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'dot';
+            dot.setAttribute('aria-label', `Перейти к изображению ${index + 1}`);
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateGallery();
+            });
+            dotsContainer.appendChild(dot);
+            return dot;
+        });
+
+        gallery.appendChild(dotsContainer);
+
         function updateGallery() {
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
         }
 
         prevBtn.addEventListener('click', () => {
@@ -834,6 +855,8 @@
             currentIndex = (currentIndex + 1) % slides.length;
             updateGallery();
         });
+
+        updateGallery();
     });
 })();
 </script>
