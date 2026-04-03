@@ -797,6 +797,7 @@ header{
     height: 100%;
     object-fit: cover;
     display: block;
+    cursor: zoom-in;
 }
 
 .gallery-arrow {
@@ -1376,6 +1377,12 @@ body.modal-open {
     gap: 15px;
 }
 
+#reportFormFields {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .report-form-group {
     display: flex;
     flex-direction: column;
@@ -1398,6 +1405,14 @@ body.modal-open {
     font-size: 14px;
     font-weight: 600;
     color: #2ae494;
+}
+
+.report-success-state {
+    display: none;
+}
+
+.report-success-state.is-visible {
+    display: block;
 }
 
 .report-form-group select,
@@ -1449,4 +1464,112 @@ body.modal-open {
 }
 .report-submit-btn:active {
     opacity: 0.5;
+}
+
+.image-viewer-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1400;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.image-viewer-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.image-viewer-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.86);
+}
+
+.image-viewer-content {
+    position: relative;
+    width: min(96vw, 1800px);
+    height: min(96vh, 1000px);
+    margin: 2vh auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.image-viewer-track-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-viewer-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.35s ease;
+}
+
+.image-viewer-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-viewer-slide img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.image-viewer-close {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 42px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.image-viewer-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.image-viewer-arrow-left {
+    left: 12px;
+}
+
+.image-viewer-arrow-right {
+    right: 12px;
+}
+
+.image-viewer-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 3;
 }
