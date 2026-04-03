@@ -60,6 +60,8 @@ body{
     flex-direction: column;
     background-color: #EDEEF0;
     gap: 35px;
+    height: 100vh;
+    overflow: hidden;
 }
 main {
     max-width: 1440px;
@@ -69,6 +71,8 @@ main {
     display: flex;
     justify-content: space-between;
     margin-top: 80px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
 }
 nav{
     padding: 0px 200px;
@@ -468,6 +472,7 @@ nav{
     display: flex;
     gap: 40px;
     margin-left: 210px;
+    align-items: flex-start;
 }
 .lenta{
     display: flex;
@@ -476,6 +481,9 @@ nav{
     border-radius: 10px;
     background-color: #FFFFFF;
     width: 520px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding-bottom: 20px;
 }
 .post{
     display: flex;
@@ -714,7 +722,6 @@ nav{
 }
 .filter-container {
     width: 350px;
-    margin-left: auto;
     background: #FFFFFF;
     border-radius: 20px;
     transition: all 0.2s ease;
@@ -725,6 +732,8 @@ nav{
     padding: 15px 0;
     height: max-content;
     box-shadow: 2px 3px 15px 0px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 80px;
 }
 
 .filter-header {
