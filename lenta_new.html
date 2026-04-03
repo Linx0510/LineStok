@@ -280,8 +280,20 @@
                             </button>
                         </div>
                     </div>
-                    <div class="image img1">
-                        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="">
+                    <div class="post-gallery" data-gallery>
+                        <button class="gallery-arrow gallery-arrow-left" type="button" data-gallery-prev aria-label="Предыдущее изображение">&#10094;</button>
+                        <div class="image-track" data-gallery-track>
+                            <div class="image img1">
+                                <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Изображение проекта 1">
+                            </div>
+                            <div class="image img1">
+                                <img src="img/Frame 113342 (1).png" alt="Изображение проекта 2">
+                            </div>
+                            <div class="image img1">
+                                <img src="img/work_img.svg" alt="Изображение проекта 3">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-arrow-right" type="button" data-gallery-next aria-label="Следующее изображение">&#10095;</button>
                     </div>
                     <div class="post-text-content" id="postTextContent">
                         <h3 class="name-project">Главная страница для SPRRRINT</h3>
@@ -335,8 +347,20 @@
                             </button>
                         </div>
                     </div>
-                    <div class="image img1">
-                        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="">
+                    <div class="post-gallery" data-gallery>
+                        <button class="gallery-arrow gallery-arrow-left" type="button" data-gallery-prev aria-label="Предыдущее изображение">&#10094;</button>
+                        <div class="image-track" data-gallery-track>
+                            <div class="image img1">
+                                <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Изображение проекта 1">
+                            </div>
+                            <div class="image img1">
+                                <img src="img/Frame 113342 (1).png" alt="Изображение проекта 2">
+                            </div>
+                            <div class="image img1">
+                                <img src="img/work_img.svg" alt="Изображение проекта 3">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-arrow-right" type="button" data-gallery-next aria-label="Следующее изображение">&#10095;</button>
                     </div>
                     <div class="post-text-content" id="postTextContent">
                         <h3 class="name-project">Главная страница для SPRRRINT</h3>
@@ -390,8 +414,20 @@
                             </button>
                         </div>
                     </div>
-                    <div class="image img1">
-                        <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="">
+                    <div class="post-gallery" data-gallery>
+                        <button class="gallery-arrow gallery-arrow-left" type="button" data-gallery-prev aria-label="Предыдущее изображение">&#10094;</button>
+                        <div class="image-track" data-gallery-track>
+                            <div class="image img1">
+                                <img src="img/ab934e72b62ae5df2cfc9b2102b0e228.jpg" alt="Изображение проекта 1">
+                            </div>
+                            <div class="image img1">
+                                <img src="img/Frame 113342 (1).png" alt="Изображение проекта 2">
+                            </div>
+                            <div class="image img1">
+                                <img src="img/work_img.svg" alt="Изображение проекта 3">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-arrow-right" type="button" data-gallery-next aria-label="Следующее изображение">&#10095;</button>
                     </div>
                     <div class="post-text-content" id="postTextContent">
                         <h3 class="name-project">Главная страница для SPRRRINT</h3>
@@ -752,6 +788,56 @@
         });
     })();
 </script>
+<script>
+(function () {
+    const lenta = document.querySelector('.lenta');
+
+    if (!lenta) return;
+
+    function canScroll(el, deltaY) {
+        if (!el) return false;
+        if (deltaY > 0) {
+            return el.scrollTop + el.clientHeight < el.scrollHeight;
+        }
+        return el.scrollTop > 0;
+    }
+
+    document.addEventListener('wheel', (event) => {
+        const scrollableParent = event.target.closest('.dropdown-notific, .filter-list, .selected-items-list, .lenta');
+
+        if (scrollableParent && scrollableParent !== lenta && canScroll(scrollableParent, event.deltaY)) {
+            return;
+        }
+
+        lenta.scrollBy({ top: event.deltaY, behavior: 'auto' });
+        event.preventDefault();
+    }, { passive: false });
+
+    document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+        const track = gallery.querySelector('[data-gallery-track]');
+        const slides = Array.from(track.children);
+        const prevBtn = gallery.querySelector('[data-gallery-prev]');
+        const nextBtn = gallery.querySelector('[data-gallery-next]');
+
+        let currentIndex = 0;
+
+        function updateGallery() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateGallery();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateGallery();
+        });
+    });
+})();
+</script>
+
 <script>
 
     const categoriesData = [

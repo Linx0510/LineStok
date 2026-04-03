@@ -774,10 +774,57 @@ header{
 .btn-complain:hover svg .svg-hover {
     fill: var(--main-2);
 }
-.image,
-.image>img{
+.post-gallery {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.35s ease;
+}
+
+.image {
+    flex: 0 0 100%;
     width: 100%;
     height: 430px;
+}
+
+.image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(41, 41, 41, 0.62);
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.gallery-arrow-left {
+    left: 12px;
+}
+
+.gallery-arrow-right {
+    right: 12px;
+}
+
+.gallery-arrow:hover {
+    background: rgba(41, 41, 41, 0.9);
 }
 .post-text-content{
     display: flex;
